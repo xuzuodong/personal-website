@@ -16,5 +16,9 @@ export default defineNuxtConfig({
             token: process.env.NUXT_SANITY_TOKEN,
         },
     },
+    typescript: {
+        typeCheck: true,
+        shim: false,
+    },
     devtools: { enabled: true },
 })
