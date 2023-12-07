@@ -23,6 +23,11 @@ export default antfu(
             'style/comma-dangle': ['warn'],
             'style/indent': ['warn'],
             'antfu/if-newline': 'off',
+            'style/keyword-spacing': 'warn',
+
+            // curly braces
+            'curly': 'off',
+            'style/brace-style': 'off',
 
             // array and object
             'antfu/consistent-list-newline': 'off',
