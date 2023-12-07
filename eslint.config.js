@@ -42,12 +42,23 @@ export default antfu(
                 },
             ],
             'import/newline-after-import': 'warn',
+        },
+    },
 
-            // vue
+    {
+        files: ['**/*.vue'],
+        rules: {
             'vue/singleline-html-element-content-newline': 'off',
             'vue/html-indent': ['warn', 4],
             'vue/component-name-in-template-casing': ['error', 'kebab-case', { registeredComponentsOnly: false }],
             'vue/html-self-closing': ['warn', { html: { normal: 'never', void: 'always' } }],
+        },
+    },
+
+    {
+        files: ['**/*.json'],
+        rules: {
+            'jsonc/indent': ['warn', 2],
         },
     },
 )
