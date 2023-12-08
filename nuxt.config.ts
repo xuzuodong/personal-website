@@ -9,6 +9,7 @@ export default defineNuxtConfig({
         '@nuxtjs/sanity',
         '@vueuse/nuxt',
         '@nuxt/image',
+        'nuxt-icon',
     ],
 
     runtimeConfig: {
@@ -28,5 +29,7 @@ export default defineNuxtConfig({
 
     sanity: { projectId: '5pzxr6po' },
 
-    colorMode: { classSuffix: '' },
+    colorMode: {
+        classSuffix: '',
+    },
 })

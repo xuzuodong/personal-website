@@ -22,7 +22,7 @@ const instantFilms = computed(() => data.value?.[0].images.map(image => ({
 </script>
 
 <template>
-    <client-only>
+    <client-only v-if="instantFilms">
         <instant-film-pile :instant-films="instantFilms" />
     </client-only>
 </template>

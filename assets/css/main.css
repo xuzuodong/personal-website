@@ -1,3 +1,14 @@
-html, body, #__nuxt {
+html,
+body,
+#__nuxt {
     @apply h-full;
+    font-family: -apple-system, Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+}
+
+body {
+    @apply bg-white text-black text-opacity-80;
+}
+
+.dark body {
+    @apply bg-sky-950 text-white text-opacity-95;
 }
