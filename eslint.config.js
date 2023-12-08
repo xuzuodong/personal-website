@@ -53,6 +53,7 @@ export default antfu(
     {
         files: ['**/*.vue'],
         rules: {
+            'ts/no-unused-vars': ['warn', { varsIgnorePattern: '^props$' }],
             'vue/singleline-html-element-content-newline': 'off',
             'vue/html-indent': ['warn', 4],
             'vue/component-name-in-template-casing': ['error', 'kebab-case', { registeredComponentsOnly: false }],

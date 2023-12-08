@@ -1,0 +1,46 @@
+{
+    "vue": {
+        "scope": "vue",
+        "prefix": "vue 3",
+        "body": [
+            "<script setup lang=\"ts\">",
+            "$2",
+            "</script>",
+            "",
+            "<template>",
+            "    <div>$1</div>",
+            "</template>",
+            "",
+        ],
+        "description": "Create Vue 3 snippets"
+    },
+    "script-setup": {
+        "scope": "vue",
+        "prefix": "script setup",
+        "body": [
+            "<script setup lang=\"ts\">",
+            "$1",
+            "</script>",
+            "",
+        ],
+        "description": "Create <script setup lang=\"ts\"> block"
+    },
+    "style": {
+        "scope": "vue",
+        "prefix": "style",
+        "body": [
+            "<style lang=\"scss\" scoped>",
+            "$1",
+            "</style>"
+        ],
+        "description": "Create <style> block"
+    },
+    "defineProps": {
+        "prefix": "const props = defineProps<{",
+        "body": [
+            "const props = defineProps<{",
+            "    $1",
+            "}>()"
+        ]
+    }
+}
