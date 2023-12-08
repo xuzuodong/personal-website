@@ -4,16 +4,17 @@ import { promiseTimeout } from '@vueuse/core'
 
 import type { Handler } from '@vueuse/gesture'
 import type { ResolvedSanityImage } from '@sanity/asset-utils'
+import type { Variant } from '@vueuse/motion'
 
 const props = defineProps<{
     instantFilms: { image: ResolvedSanityImage, orientation: 'portrait' | 'landscape' }[]
 }>()
 
-function enterVariant(i: number) {
+const motions = useMotions()
+
+function enterVariant(i: number): Variant {
     return { x: 0, y: 0, scale: 1, rotate: (Math.random() - 0.5) * 20, transition: { delay: i * 150, stiffness: 120, damping: 20 } }
 }
-
-const motions = useMotions()
 
 const goneCards = reactive(new Set())
 
@@ -24,9 +25,8 @@ whenever(() => goneCards.size === props.instantFilms.length, async () => {
 })
 
 function handleDrug(i: number) {
-    const motionName = `motion-${i}`
     return function ({ movement, dragging, velocities: [vx] }: Parameters<Handler<'drag'>>[0]) {
-        const motionInstance = motions[motionName]
+        const motionInstance = motions[`motion-${i}`]
         if (!motionInstance) return
 
         const trigger = Math.abs(vx) > 0.2
