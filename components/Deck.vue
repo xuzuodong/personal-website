@@ -6,7 +6,7 @@ import type { Handler } from '@vueuse/gesture'
 import type { ResolvedSanityImage } from '@sanity/asset-utils'
 
 const props = defineProps<{
-    cards: { image: ResolvedSanityImage, orientation: 'portrait' | 'landscape' }[]
+    instantFilms: { image: ResolvedSanityImage, orientation: 'portrait' | 'landscape' }[]
 }>()
 
 function enterVariant(i: number) {
@@ -17,7 +17,7 @@ const motions = useMotions()
 
 const goneCards = reactive(new Set())
 
-whenever(() => goneCards.size === props.cards.length, async () => {
+whenever(() => goneCards.size === props.instantFilms.length, async () => {
     await promiseTimeout(600)
     Object.values(motions).forEach((motion, i) => motion.apply(enterVariant(i)))
     goneCards.clear()
@@ -59,16 +59,16 @@ function handleDrug(i: number) {
 <template>
     <div class="relative h-[500px]">
         <div
-            v-for="(card, i) in cards" :key="card.image.asset._id"
-            class="picture-container"
+            v-for="(card, i) in instantFilms" :key="card.image.asset._id"
+            class="instant-film-container"
         >
             <div
                 v-motion="`motion-${i}`"
                 v-drag="handleDrug(i)"
                 :initial="{ scale: 1.5, y: -1000 }"
                 :enter="enterVariant(i)"
-                class="picture"
-                :class="goneCards.size === cards.length - i - 1 ? 'pointer-events-auto' : 'pointer-events-none'"
+                class="instant-film"
+                :class="goneCards.size === instantFilms.length - i - 1 ? 'pointer-events-auto' : 'pointer-events-none'"
             >
                 <sanity-image
                     :asset-id="card.image.asset._id" :w="720" :h="720"
@@ -85,14 +85,14 @@ function handleDrug(i: number) {
 </template>
 
 <style scoped>
-.picture-container {
+.instant-film-container {
     @apply absolute w-full h-full
         flex justify-center items-center
         pointer-events-none select-none touch-none
         will-change-transform;
 }
 
-.picture {
+.instant-film {
     @apply bg-white border-white border-[1em] border-b-[4em] rounded-[3px]
         will-change-transform;
     box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3);

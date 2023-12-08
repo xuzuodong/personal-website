@@ -13,7 +13,7 @@ const { data } = useSanityQuery<{
     images: ResolvedSanityImage[]
 }[]>(query)
 
-const photos = computed(() => data.value?.[0].images.map(image => ({
+const instantFilms = computed(() => data.value?.[0].images.map(image => ({
     image,
     orientation: image.asset.metadata.dimensions.aspectRatio > 1
         ? 'landscape' as const
@@ -23,6 +23,6 @@ const photos = computed(() => data.value?.[0].images.map(image => ({
 
 <template>
     <client-only>
-        <deck :cards="photos" />
+        <deck :instant-films="instantFilms" />
     </client-only>
 </template>
