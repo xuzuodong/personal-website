@@ -22,7 +22,18 @@ const instantFilms = computed(() => data.value?.[0].images.map(image => ({
 </script>
 
 <template>
-    <client-only v-if="instantFilms">
-        <instant-film-pile :instant-films="instantFilms" />
-    </client-only>
+    <div
+        class="
+          flex [&>*]:basis-1/2 h-3/5 items-center
+        "
+    >
+        <div class="">
+            hangzhou, china
+        </div>
+        <div>
+            <client-only v-if="instantFilms">
+                <instant-film-pile :instant-films="instantFilms" />
+            </client-only>
+        </div>
+    </div>
 </template>
