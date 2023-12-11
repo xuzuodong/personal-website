@@ -74,8 +74,8 @@ function handleDrug(i: number) {
                     :asset-id="card.image.asset._id" :w="720" :h="720"
                     :class="[
                         card.orientation === 'landscape'
-                            ? 'w-[256px] h-[192px] sm:w-[320px] sm:h-[240px]'
-                            : 'w-[192px] h-[256px] sm:w-[240px] sm:h-[320px]',
+                            ? 'w-[256px] h-[192px] lg:w-[320px] lg:h-[240px]'
+                            : 'w-[192px] h-[256px] lg:w-[240px] lg:h-[320px]',
                     ]"
                     class="image"
                 />
@@ -93,7 +93,8 @@ function handleDrug(i: number) {
 }
 
 .instant-film {
-    @apply bg-white border-white border-[1em] border-b-[4em] rounded-[3px]
+    @apply bg-white border-white
+        border-[0.8em] border-b-[3.2em] lg:border-[1em] lg:border-b-[4em] rounded-[3px]
         will-change-transform;
     box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3);
     filter: sepia(0.05) brightness(0.9);

@@ -4,6 +4,6 @@
         <div class="flex-1">
             <slot></slot>
         </div>
-        <app-footer />
+        <!-- <app-footer /> -->
     </div>
 </template>
