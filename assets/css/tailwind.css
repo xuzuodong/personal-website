@@ -1,3 +1,8 @@
+/* 
+There is no need to manually import this file, 
+@nuxtjs/tailwindcss will automatically load the CSS configuration for this file 
+*/
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -23,7 +23,9 @@ export default defineNuxtConfig({
         shim: false,
     },
 
-    css: ['~/assets/css/main.css'],
+    css: [
+        '~/assets/css/main.css',
+    ],
 
     devtools: { enabled: true },
 

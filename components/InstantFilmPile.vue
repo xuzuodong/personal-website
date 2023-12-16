@@ -18,42 +18,67 @@ function enterVariant(i: number): Variant {
 
 const goneCards = reactive(new Set())
 
-whenever(() => goneCards.size === props.instantFilms.length, async () => {
-    await promiseTimeout(600)
-    Object.values(motions).forEach((motion, i) => motion.apply(enterVariant(i)))
-    goneCards.clear()
+function moveCardOutOfScreen(i: number, movementX: number, vx: number) {
+    const motionInstance = motions[`motion-${i}`]
+    const x = (200 + window.innerWidth) * Math.sign(vx)
+    const rotate = movementX / 100 + (10 * vx)
+    motionInstance.apply({ x, rotate, transition: { stiffness: 120, damping: 20 } })
+}
+
+function moveCardBack(i: number) {
+    const motionInstance = motions[`motion-${i}`]
+    motionInstance.apply({ x: 0, y: 0, scale: 1, transition: { stiffness: 120, damping: 15 } })
+}
+
+function moveCardWithCursor(i: number, movementX: number) {
+    const motionInstance = motions[`motion-${i}`]
+    motionInstance.apply({ x: movementX, scale: 1.1, rotate: 0, transition: { stiffness: 400, damping: 20 } })
+}
+
+let draggingInfo: null | { i: number, movementX: number, vx: number, cancel: () => void } = null
+
+useEventListener(document, 'pointerup', () => {
+    if (draggingInfo) {
+        const { i, movementX, vx, cancel } = draggingInfo
+        goneCards.add(i)
+        draggingInfo = null
+        cancel()
+        moveCardOutOfScreen(i, movementX, vx)
+    }
 })
 
-function handleDrug(i: number) {
-    return function ({ movement, dragging, velocities: [vx] }: Parameters<Handler<'drag'>>[0]) {
+function handleDrag(i: number) {
+    return function (state: Parameters<Handler<'drag'>>[0]) {
+        const { movement, dragging, velocities: [vx], cancel } = state
         const motionInstance = motions[`motion-${i}`]
         if (!motionInstance) return
 
         const trigger = Math.abs(vx) > 0.2
-        const springParams = { stiffness: 120, damping: 20 }
 
-        // move the card out of the screen
         if (!dragging && trigger) {
             goneCards.add(i)
-
-            const x = (200 + window.innerWidth) * Math.sign(vx)
-            const rotate = movement[0] / 100 + (Math.sign(vx) * 10 * vx)
-
-            motionInstance.apply({ x, rotate, transition: springParams })
+            draggingInfo = null
+            moveCardOutOfScreen(i, movement[0], vx)
         }
 
-        // move the card back to the center
         else if (!dragging) {
-            motionInstance.apply({ x: 0, y: 0, scale: 1, transition: { stiffness: 120, damping: 15 } })
+            draggingInfo = null
+            moveCardBack(i)
         }
 
-        // move the card with the cursor
         else {
-            const x = movement[0]
-            motionInstance.apply({ x, scale: 1.1, rotate: 0, transition: springParams })
+            draggingInfo = { i, movementX: movement[0], vx, cancel }
+            moveCardWithCursor(i, movement[0])
         }
     }
 }
+
+whenever(() => goneCards.size === props.instantFilms.length, async () => {
+    await promiseTimeout(600)
+    Object.values(motions).forEach((motion, i) => motion.apply(enterVariant(i)))
+    draggingInfo = null
+    goneCards.clear()
+})
 </script>
 
 <template>
@@ -64,7 +89,7 @@ function handleDrug(i: number) {
         >
             <div
                 v-motion="`motion-${i}`"
-                v-drag="handleDrug(i)"
+                v-drag="handleDrag(i)"
                 :initial="{ scale: 1.5, y: -1000 }"
                 :enter="enterVariant(i)"
                 class="instant-film"
