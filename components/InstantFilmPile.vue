@@ -34,7 +34,8 @@ let draggingInfo: null | { i: number, movementX: number, vx: number, cancel: () 
  To address this, we listen to the document's `pointerup` event to ensure the interaction is properly completed.
  */
 onMounted(() => {
-    useEventListener(document, 'pointerup', () => {
+    useEventListener(document, 'pointerup', async () => {
+        await promiseTimeout(0) // determine after `handleDrag` is called
         if (draggingInfo) {
             const { i, movementX, vx, cancel } = draggingInfo
             goneCards.add(i)
