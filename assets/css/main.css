@@ -1,3 +1,7 @@
+* {
+    min-height: 0;
+}
+
 html,
 body,
 #__nuxt {
