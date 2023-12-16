@@ -24,19 +24,24 @@ const instantFilms = computed(() => data.value?.[0].images.map(image => ({
 <template>
     <div
         class="
-            min-h-[calc(max(540px,60%))] container mx-auto
+            min-h-[calc(max(540px,60%))] container
             flex flex-col-reverse lg:flex-row
             [&>*]:w-full
         "
     >
-        <div class="px-4 lg:px-6 xl:px-8 flex flex-col justify-center lg:basis-1/2 xl:basis-3/5">
+        <div class="flex flex-col justify-center lg:basis-1/2 xl:basis-3/5">
             <div class="hidden lg:flex items-center space-x-1">
                 <icon name="tdesign:location" />
                 <p>Hangzhou, China</p>
             </div>
 
             <div class="h-3/5 flex flex-col justify-center space-y-6">
-                <h1 class="text-center lg:text-left text-2xl lg:text-4xl xl:text-5xl lg:leading-tight xl:leading-[1.3] font-semibold">
+                <h1
+                    class="
+                        text-center lg:text-left font-semibold
+                        text-2xl lg:text-4xl xl:text-5xl 2xl:text-[3.375rem] lg:leading-tight xl:leading-[1.3] 2xl:leading-[1.2]
+                    "
+                >
                     Scripting realities in bytes, <br />
                     Painting tales with light.
                 </h1>
@@ -47,10 +52,8 @@ const instantFilms = computed(() => data.value?.[0].images.map(image => ({
             </div>
         </div>
 
-        <div class="self-center lg:basis-1/2 xl:basis-2/5">
-            <client-only v-if="instantFilms">
-                <instant-film-pile :instant-films="instantFilms" />
-            </client-only>
+        <div class="self-center lg:basis-1/2 xl:basis-2/5 min-h-[500px] relative">
+            <instant-film-pile v-if="instantFilms" :instant-films="instantFilms" />
         </div>
     </div>
 </template>

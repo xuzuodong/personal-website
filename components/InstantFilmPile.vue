@@ -33,14 +33,16 @@ let draggingInfo: null | { i: number, movementX: number, vx: number, cancel: () 
  and releases the mouse before the interaction can catch up.
  To address this, we listen to the document's `pointerup` event to ensure the interaction is properly completed.
  */
-useEventListener(document, 'pointerup', () => {
-    if (draggingInfo) {
-        const { i, movementX, vx, cancel } = draggingInfo
-        goneCards.add(i)
-        draggingInfo = null
-        cancel()
-        moveCardOutOfScreen(i, movementX, vx)
-    }
+onMounted(() => {
+    useEventListener(document, 'pointerup', () => {
+        if (draggingInfo) {
+            const { i, movementX, vx, cancel } = draggingInfo
+            goneCards.add(i)
+            draggingInfo = null
+            cancel()
+            moveCardOutOfScreen(i, movementX, vx)
+        }
+    })
 })
 
 function handleDrag(i: number) {
@@ -81,11 +83,8 @@ whenever(() => goneCards.size === props.instantFilms.length, async () => {
 </script>
 
 <template>
-    <div class="relative h-[500px]">
-        <div
-            v-for="(card, i) in instantFilms" :key="card.image.asset._id"
-            class="film-container"
-        >
+    <client-only>
+        <div v-for="(card, i) in instantFilms" :key="card.image.asset._id" class="film-container">
             <instant-film-frame
                 v-motion="`motion-${i}`"
                 v-drag="handleDrag(i)"
@@ -104,6 +103,15 @@ whenever(() => goneCards.size === props.instantFilms.length, async () => {
                 />
             </instant-film-frame>
         </div>
+    </client-only>
+
+    <!-- only for ssr optimization -->
+    <div v-for="card in instantFilms" :key="card.image.asset._id" class="hidden">
+        <sanity-image :asset-id="card.image.asset._id" :w="720" :h="720">
+            <template #default="{ src }">
+                <nuxt-img :src="src" preload />
+            </template>
+        </sanity-image>
     </div>
 </template>
 
