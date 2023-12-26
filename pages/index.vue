@@ -25,7 +25,7 @@ const instantFilms = computed(() => data.value?.[0].images.map(image => ({
     <div
         class="
             min-h-[calc(max(540px,60%))] container
-            flex flex-col-reverse lg:flex-row
+            flex flex-col-reverse lg:flex-row lg:space-x-4 xl:space-x-12
             [&>*]:w-full
         "
     >
@@ -35,18 +35,13 @@ const instantFilms = computed(() => data.value?.[0].images.map(image => ({
                 <p>Hangzhou, China</p>
             </div>
 
-            <div class="h-3/5 flex flex-col justify-center space-y-6">
-                <h1
-                    class="
-                        text-center lg:text-left font-semibold
-                        text-2xl lg:text-4xl xl:text-5xl 2xl:text-[3.375rem] lg:leading-tight xl:leading-[1.3] 2xl:leading-[1.2]
-                    "
-                >
+            <div class="h-3/5 flex flex-col justify-center space-y-6 lg:space-y-10">
+                <h1>
                     Scripting realities in bytes, <br />
                     Painting tales with light.
                 </h1>
 
-                <p class="text-sm text-center lg:text-left lg:text-base lg:leading-snug">
+                <p class="xs:text-sm sm:text-base text-center lg:text-left lg:text-lg xl:text-xl lg:leading-snug">
                     I'm a front-end engineer and photographer who loves creating captivating websites and capturing beautiful moments. Explore my creations on this website and enjoy!
                 </p>
             </div>

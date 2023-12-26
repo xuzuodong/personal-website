@@ -10,3 +10,9 @@ There is no need to manually import this file,
 .btn-primary {
     @apply text-white;
 }
+
+h1 {
+    @apply text-center lg:text-left font-semibold
+        text-2xl sm:text-4xl xl:text-5xl 2xl:text-[3.375rem] lg:leading-tight xl:leading-[1.3] 2xl:leading-[1.2];
+}
+

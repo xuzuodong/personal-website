@@ -22,7 +22,7 @@ function moveCardOutOfScreen(i: number, movementX: number, vx: number) {
     const motionInstance = motions[`motion-${i}`]
     const x = (200 + window.innerWidth) * Math.sign(vx)
     const rotate = movementX / 100 + (10 * vx)
-    motionInstance.apply({ x, rotate, transition: { stiffness: 120, damping: 20 } })
+    motionInstance.apply({ x, rotate, transition: { stiffness: 100, damping: 25 } })
 }
 
 let draggingInfo: null | { i: number, movementX: number, vx: number, cancel: () => void } = null
@@ -64,13 +64,13 @@ function handleDrag(i: number) {
         // move the card back to its original position
         else if (!dragging) {
             draggingInfo = null
-            motionInstance.apply({ x: 0, y: 0, scale: 1, rotate: 0, transition: { stiffness: 120, damping: 15 } })
+            motionInstance.apply({ x: 0, y: 0, scale: 1, transition: { stiffness: 400, damping: 50 } })
         }
 
         // keep the card moving with the pointer
         else {
             draggingInfo = { i, movementX: movement[0], vx, cancel }
-            motionInstance.apply({ x: movement[0], scale: 1.1, rotate: 0, transition: { stiffness: 400, damping: 20 } })
+            motionInstance.apply({ x: movement[0], scale: 1.1, rotate: movement[0] / 100, transition: { stiffness: 500, damping: 50 } })
         }
     }
 }
@@ -97,8 +97,8 @@ whenever(() => goneCards.size === props.instantFilms.length, async () => {
                     :asset-id="card.image.asset._id" :w="720" :h="720"
                     :class="[
                         card.orientation === 'landscape'
-                            ? 'w-[256px] h-[192px] lg:w-[320px] lg:h-[240px]'
-                            : 'w-[192px] h-[256px] lg:w-[240px] lg:h-[320px]',
+                            ? 'w-[224px] h-[168px] md:w-[256px] md:h-[192px] 2xl:w-[320px] 2xl:h-[240px]'
+                            : 'w-[168px] h-[224px] md:w-[192px] md:h-[256px] 2xl:w-[240px] 2xl:h-[320px]',
                     ]"
                     class="object-cover pointer-events-none touch-none select-none"
                 />
