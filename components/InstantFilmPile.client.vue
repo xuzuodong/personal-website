@@ -84,35 +84,24 @@ whenever(() => goneCards.size === props.instantFilms.length, async () => {
 </script>
 
 <template>
-    <client-only>
-        <div v-for="(card, i) in instantFilms" :key="card.image.asset._id" class="film-container">
-            <instant-film-frame
-                v-motion="`motion-${i}`"
-                v-drag="handleDrag(i)"
-                :initial="{ scale: 1.5, y: -1000 }"
-                :enter="enterVariant(i)"
-                :class="goneCards.size === instantFilms.length - i - 1 ? 'pointer-events-auto' : 'pointer-events-none'"
-            >
-                <sanity-image
-                    :asset-id="card.image.asset._id" :w="720" :h="720"
-                    :class="[
-                        card.orientation === 'landscape'
-                            ? 'w-[224px] h-[168px] md:w-[256px] md:h-[192px] 2xl:w-[320px] 2xl:h-[240px]'
-                            : 'w-[168px] h-[224px] md:w-[192px] md:h-[256px] 2xl:w-[240px] 2xl:h-[320px]',
-                    ]"
-                    class="object-cover pointer-events-none touch-none select-none"
-                />
-            </instant-film-frame>
-        </div>
-    </client-only>
-
-    <!-- only for ssr optimization -->
-    <div v-for="card in instantFilms" :key="card.image.asset._id" class="hidden">
-        <sanity-image :asset-id="card.image.asset._id" :w="720" :h="720">
-            <template #default="{ src }">
-                <nuxt-img :src="src" preload />
-            </template>
-        </sanity-image>
+    <div v-for="(card, i) in instantFilms" :key="card.image.asset._id" class="film-container">
+        <instant-film-frame
+            v-motion="`motion-${i}`"
+            v-drag="handleDrag(i)"
+            :initial="{ scale: 1.5, y: -1000 }"
+            :enter="enterVariant(i)"
+            :class="goneCards.size === instantFilms.length - i - 1 ? 'pointer-events-auto' : 'pointer-events-none'"
+        >
+            <sanity-image
+                :asset-id="card.image.asset._id" :w="720" :h="720"
+                :class="[
+                    card.orientation === 'landscape'
+                        ? 'w-[224px] h-[168px] md:w-[256px] md:h-[192px] 2xl:w-[320px] 2xl:h-[240px]'
+                        : 'w-[168px] h-[224px] md:w-[192px] md:h-[256px] 2xl:w-[240px] 2xl:h-[320px]',
+                ]"
+                class="object-cover pointer-events-none touch-none select-none"
+            />
+        </instant-film-frame>
     </div>
 </template>
 
