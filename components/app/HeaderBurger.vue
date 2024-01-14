@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const modelValue = ref(false)
+const modelValue = defineModel<boolean>({ required: true })
 </script>
 
 <template>
@@ -18,7 +18,6 @@ const modelValue = ref(false)
     display: block;
 }
 
-/*小屏汉堡包*/
 a.target-burger {
     cursor: pointer;
     width: 2.5rem;
@@ -63,8 +62,12 @@ a.target-burger ul.buns li.bun {
     top: 65%;
     -webkit-transform: translateY(-3.75px) translateZ(0);
     transform: translateY(-3.75px) translateZ(0);
-    -webkit-transition: -webkit-transform 1s cubic-bezier(0.23, 1, 0.32, 1), background-color 1s cubic-bezier(0.23, 1, 0.32, 1);
-    transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1), background-color 1s cubic-bezier(0.23, 1, 0.32, 1);
+    -webkit-transition: -webkit-transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.dark a.target-burger ul.buns li.bun {
+    background-color: #fff;
 }
 
 a.target-burger ul.buns li.bun:last-child {

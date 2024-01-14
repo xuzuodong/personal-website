@@ -24,7 +24,7 @@ const instantFilms = computed(() => data.value?.[0].images.map(image => ({
 <template>
     <div
         class="
-            min-h-[calc(max(540px,60%))] container
+            min-h-[calc(max(540px,60%))]
             flex flex-col-reverse lg:flex-row lg:space-x-4 xl:space-x-12
             [&>*]:w-full
         "
@@ -42,7 +42,8 @@ const instantFilms = computed(() => data.value?.[0].images.map(image => ({
                 </h1>
 
                 <p class="xs:text-sm sm:text-base text-center lg:text-left lg:text-lg xl:text-xl lg:leading-snug">
-                    I'm a front-end engineer and photographer who loves creating captivating websites and capturing beautiful moments. Explore my creations on this website and enjoy!
+                    I'm a front-end engineer and photographer who loves creating captivating websites and capturing beautiful moments.
+                    Explore my creations on this website and enjoy!
                 </p>
             </div>
         </div>

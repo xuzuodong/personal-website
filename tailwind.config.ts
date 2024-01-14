@@ -5,6 +5,7 @@ import themes from 'daisyui/src/theming/themes'
 import type { Config } from 'tailwindcss'
 
 export default <Partial<Config>>{
+    darkMode: 'class',
     plugins: [
         daisyui,
     ],
