@@ -61,10 +61,12 @@ watch(() => colorMode.value, (value) => {
         v-motion="'menu'"
         :initial="{
             backdropFilter: 'blur(0px)',
+            WebkitBackdropFilter: 'blur(0px)',
             backgroundColor: $colorMode.value === 'dark' ? 'rgba(0, 0, 0, 0)' : 'rgba(255, 255, 255, 0)',
         }"
         :enter="{
             backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
             backgroundColor: $colorMode.value === 'dark' ? menuBackdropBgColorDark : menuBackdropBgColorLight,
             transition: { duration: 300 },
         }"
