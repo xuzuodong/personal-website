@@ -2,7 +2,7 @@
 
 /**
  * This file is a Vercel Edge Function middleware.
- * It rewrites requests to the Sanity Studio to the correct domain.
+ * It rewrites requests to the Sanity Studio you deployed.
  */
 
 import { rewrite } from '@vercel/edge'
