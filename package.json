@@ -1,10 +1,15 @@
 {
   "name": "personal-website",
+  "type": "module",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "dev": "bun run --cwd packages/app dev",
+    "dev:studio": "bun run --cwd packages/studio dev",
     "build": "bun run --cwd packages/app build",
+    "build:studio": "bun run --cwd packages/studio build",
     "preview": "bun run --cwd packages/app preview",
     "pb": "bun run --cwd packages/app pb",
     "typecheck": "bun run --cwd packages/app typecheck",
@@ -17,5 +22,8 @@
     "@typescript-eslint/parser": "^6.13.1",
     "eslint": "^8.55.0",
     "typescript": "^5.3.2"
+  },
+  "overrides": {
+    "vite": "~5.0.12"
   }
 }
