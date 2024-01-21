@@ -7,7 +7,6 @@ import { media } from 'sanity-plugin-media'
 import { schemaTypes } from './schemas'
 
 export default defineConfig({
-    basePath: '/studio',
     name: 'default',
     title: 'My personal website',
 
