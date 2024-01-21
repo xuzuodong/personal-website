@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/studio/:match*",
+      "destination": "https://xzd-me-studio.vercel.app/studio/:match*"
+    }
+  ]
+}
