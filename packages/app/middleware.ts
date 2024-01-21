@@ -6,6 +6,6 @@ export default function middleware(request: Request) {
 
     if (url.pathname.startsWith('/studio')) {
         const baseUrl = process.env.SANITY_STUDIO_SITE_DOMAIN || ''
-        return rewrite(`https://${baseUrl}${url.pathname}`)
+        return rewrite(new URL(url.pathname, baseUrl))
     }
 }
