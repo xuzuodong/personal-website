@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/studio*",
-      "destination": "/*"
+      "source": "/studio/:match*",
+      "destination": "/:match*"
     }
   ]
 }
