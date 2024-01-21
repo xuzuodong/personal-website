@@ -1,3 +1,5 @@
+import process from 'node:process'
+
 import { defineCliConfig } from 'sanity/cli'
 
 export default defineCliConfig({
@@ -5,7 +7,7 @@ export default defineCliConfig({
         basePath: '/studio',
     },
     api: {
-        projectId: 'x345np1f',
+        projectId: process.env.SANITY_PROJECT_ID,
         dataset: 'production',
     },
     server: {

@@ -12,12 +12,6 @@ export default defineNuxtConfig({
         'nuxt-icon',
     ],
 
-    runtimeConfig: {
-        sanity: {
-            token: process.env.NUXT_SANITY_TOKEN,
-        },
-    },
-
     typescript: {
         typeCheck: 'build',
         shim: false,
@@ -29,7 +23,7 @@ export default defineNuxtConfig({
 
     devtools: { enabled: true },
 
-    sanity: { projectId: '5pzxr6po' },
+    sanity: { projectId: process.env.SANITY_PROJECT_ID },
 
     colorMode: {
         classSuffix: '',
