@@ -29,7 +29,6 @@
     "@vueuse/motion": "^2.0.0",
     "@vueuse/nuxt": "^10.7.0",
     "daisyui": "^4.4.19",
-    "esbuild": "0.18.20",
     "nuxt": "^3.9.1",
     "nuxt-icon": "^0.6.7",
     "sass": "^1.69.5",
