@@ -6,11 +6,14 @@ import { media } from 'sanity-plugin-media'
 
 import { schemaTypes } from './schemas'
 
+const projectId = process.env.SANITY_PROJECT_ID
+if (!projectId) throw new Error('Missing SANITY_PROJECT_ID')
+
 export default defineConfig({
     name: 'default',
     title: 'My personal website',
 
-    projectId: '5pzxr6po',
+    projectId,
     dataset: 'production',
 
     plugins: [
