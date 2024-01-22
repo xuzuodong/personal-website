@@ -7,7 +7,7 @@ export default defineCliConfig({
         basePath: '/studio',
     },
     api: {
-        projectId: process.env.SANITY_PROJECT_ID,
+        projectId: process.env.SANITY_STUDIO_PROJECT_ID,
         dataset: 'production',
     },
     server: {

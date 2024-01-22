@@ -6,8 +6,10 @@ import { media } from 'sanity-plugin-media'
 
 import { schemaTypes } from './schemas'
 
-const projectId = process.env.SANITY_PROJECT_ID
-if (!projectId) throw new Error('Missing SANITY_PROJECT_ID')
+// eslint-disable-next-line node/prefer-global/process
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID
+
+if (!projectId) throw new Error('Missing SANITY_STUDIO_PROJECT_ID')
 
 export default defineConfig({
     name: 'default',

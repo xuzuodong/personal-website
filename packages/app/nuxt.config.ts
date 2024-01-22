@@ -23,7 +23,7 @@ export default defineNuxtConfig({
 
     devtools: { enabled: true },
 
-    sanity: { projectId: process.env.SANITY_PROJECT_ID },
+    sanity: { projectId: process.env.SANITY_STUDIO_PROJECT_ID },
 
     colorMode: {
         classSuffix: '',
