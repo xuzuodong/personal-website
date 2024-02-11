@@ -1,7 +1,10 @@
-import gallery from './gallery'
-import deckPhotos from './deckPhotos'
+import galleries from './galleries'
+import instantFilms from './instantFilms'
+import photo from './photo'
 
 export const schemaTypes = [
-    gallery,
-    deckPhotos,
+    galleries,
+    instantFilms,
+
+    photo,
 ]

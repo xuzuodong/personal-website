@@ -1,21 +1,20 @@
 <script setup lang="ts">
-import type { ResolvedSanityImage } from '@sanity/asset-utils'
-
 const query = groq`
-*[_type == "deckPhotos"]{
+*[_type == "instantFilms"]{
   images[]{
     ...,
-    asset->
+    image{
+      ...,
+      asset->
+    }
   }
 }`
 
-const { data } = useSanityQuery<{
-    images: ResolvedSanityImage[]
-}[]>(query)
+const { data } = useSanityQuery<any[]>(query)
 
-const instantFilms = computed(() => data.value?.[0].images.map(image => ({
-    image,
-    orientation: image.asset.metadata.dimensions.aspectRatio > 1
+const instantFilms = computed(() => data.value?.[0].images.map((image: any) => ({
+    image: image.image,
+    orientation: image.image?.asset.metadata.dimensions.aspectRatio > 1
         ? 'landscape' as const
         : 'portrait' as const,
 })))
