@@ -1,5 +1,5 @@
 {
-  "name": "personal-website-app",
+  "name": "@personal-website/app",
   "type": "module",
   "private": true,
   "license": "MIT",
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --dotenv ../../.env",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "bp": "nuxt build && nuxt preview",
@@ -23,6 +23,7 @@
     "@nuxtjs/color-mode": "^3.3.2",
     "@nuxtjs/sanity": "^1.8.3",
     "@nuxtjs/tailwindcss": "latest",
+    "@personal-website/studio": "workspace:*",
     "@sanity/asset-utils": "^1.3.0",
     "@sanity/client": "^6.9.1",
     "@vercel/edge": "^1.1.1",
