@@ -6,10 +6,19 @@ export default defineType({
     title: 'Instant Films',
     fields: [
         defineField({
-            name: 'images',
+            name: 'instantFilms',
             type: 'array',
-            title: 'Images',
-            of: [defineArrayMember({ type: 'photo' })],
+            title: 'Instant Films',
+            of: [defineArrayMember({
+                name: 'image',
+                title: 'Image',
+                type: 'image',
+                options: {
+                    metadata: ['blurhash', 'lqip', 'palette', 'exif'],
+                    hotspot: true,
+                    storeOriginalFilename: false,
+                },
+            })],
         }),
     ],
 })

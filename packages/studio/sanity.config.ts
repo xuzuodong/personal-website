@@ -6,6 +6,7 @@ import { media } from 'sanity-plugin-media'
 import { internationalizedArray } from 'sanity-plugin-internationalized-array'
 
 import { schemaTypes } from './schemas'
+import { structure } from './deskStructure'
 
 import type { InferSchemaValues } from '@sanity-typed/types'
 
@@ -22,7 +23,7 @@ const config = defineConfig({
     dataset: 'production',
 
     plugins: [
-        structureTool(),
+        structureTool({ structure }),
         unsplashImageAsset(),
         visionTool({ defaultApiVersion: '2023-06-21' }),
         media(),
@@ -32,7 +33,7 @@ const config = defineConfig({
                 { id: 'zh', title: '简体中文' },
             ],
             defaultLanguages: ['en'],
-            fieldTypes: ['string'],
+            fieldTypes: ['string', 'text'],
         }),
     ],
 
