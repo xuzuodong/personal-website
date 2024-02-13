@@ -1,5 +1,5 @@
 import { visionTool } from '@sanity/vision'
-import { defineConfig } from '@sanity-typed/types'
+import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { media } from 'sanity-plugin-media'
@@ -7,8 +7,6 @@ import { internationalizedArray } from 'sanity-plugin-internationalized-array'
 
 import { schemaTypes } from './schemas'
 import { structure } from './deskStructure'
-
-import type { InferSchemaValues } from '@sanity-typed/types'
 
 // eslint-disable-next-line node/prefer-global/process
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID
@@ -43,4 +41,3 @@ const config = defineConfig({
 })
 
 export default config
-export type SanityValues = InferSchemaValues<typeof config>
