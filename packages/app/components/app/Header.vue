@@ -44,7 +44,7 @@ watch(() => colorMode.value, (value) => {
                 </nuxt-link>
             </div>
 
-            <base-switch-theme />
+            <app-switch-theme />
         </div>
 
         <div class="px-4 h-full flex lg:hidden justify-between items-center">
@@ -94,7 +94,7 @@ watch(() => colorMode.value, (value) => {
             </div>
 
             <div class="pt-8">
-                <base-switch-theme @click.stop />
+                <app-switch-theme @click.stop />
             </div>
         </div>
     </div>
