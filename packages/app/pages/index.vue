@@ -42,6 +42,10 @@ const instantFilms = computed(() => data.value?.map(image => ({
                     I'm a front-end engineer and photographer who loves creating captivating websites and capturing beautiful moments.
                     Explore my creations on this website and enjoy!
                 </p>
+
+                <div>
+                    <ui-button>Explore More</ui-button>
+                </div>
             </div>
         </div>
 

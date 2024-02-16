@@ -2,6 +2,8 @@ import process from 'node:process'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    extends: ['../ui'],
+
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/color-mode',
@@ -24,9 +26,8 @@ export default defineNuxtConfig({
 
     css: [
         '~/assets/css/main.css',
+        '../ui/assets/css/tailwind.css',
     ],
-
-    devtools: { enabled: true },
 
     sanity: {
         projectId: process.env.SANITY_STUDIO_PROJECT_ID,
@@ -36,4 +37,6 @@ export default defineNuxtConfig({
     colorMode: {
         classSuffix: '',
     },
+
+    devtools: { enabled: true },
 })
