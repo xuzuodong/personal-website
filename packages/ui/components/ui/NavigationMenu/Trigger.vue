@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { NavigationMenuTrigger } from 'radix-vue'
 
+import { Icon } from '#components'
+
 import type { NavigationMenuTriggerProps } from 'radix-vue'
 
 const props = defineProps<

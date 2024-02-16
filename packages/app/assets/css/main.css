@@ -9,10 +9,7 @@ body,
     font-family: -apple-system, Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
 }
 
-body {
-    @apply bg-white text-black text-opacity-80;
-}
-
-.dark body {
-    @apply bg-sky-950 text-white text-opacity-95;
+h1 {
+    @apply text-center lg:text-left font-semibold
+        text-2xl sm:text-4xl xl:text-5xl lg:leading-tight xl:leading-[1.3] 2xl:leading-[1.2];
 }

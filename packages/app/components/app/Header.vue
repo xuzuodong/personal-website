@@ -24,7 +24,7 @@ watch(() => colorMode.value, (value) => {
 
 <template>
     <div
-        class="dark:border-b dark:border-gray-300 dark:border-opacity-30 shadow-lg dark:shadow-none h-[60px]"
+        class="dark:border-b shadow-lg dark:shadow-none h-[60px]"
     >
         <div class="hidden lg:flex h-full container justify-between items-center">
             <nuxt-link to="/">
@@ -32,16 +32,24 @@ watch(() => colorMode.value, (value) => {
             </nuxt-link>
 
             <div class="flex items-center space-x-4">
-                <nuxt-link
-                    v-for="item in navItems"
-                    :key="item.path"
-                    :to="item.path"
-                    class="text-gray-7 dark:text-white hover:text-gray-900 dark:hover:text-gray-100"
-                    active-class="text-gray-900 dark:text-gray-100"
-                    exact
-                >
-                    {{ item.name }}
-                </nuxt-link>
+                <ui-navigation-menu>
+                    <ui-navigation-menu-list>
+                        <ui-navigation-menu-item
+                            v-for="item in navItems"
+                            :key="item.path"
+                        >
+                            <ui-navigation-menu-link as-child>
+                                <nuxt-link
+                                    :to="item.path"
+                                    class="text-muted-foreground"
+                                    exact-active-class="text-primary"
+                                >
+                                    <ui-button variant="ghost">{{ item.name }}</ui-button>
+                                </nuxt-link>
+                            </ui-navigation-menu-link>
+                        </ui-navigation-menu-item>
+                    </ui-navigation-menu-list>
+                </ui-navigation-menu>
             </div>
 
             <app-switch-theme />

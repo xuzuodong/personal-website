@@ -5,14 +5,14 @@ export default defineNuxtConfig({
     extends: ['../ui'],
 
     modules: [
-        '@nuxtjs/tailwindcss',
-        '@nuxtjs/color-mode',
         '@vueuse/motion/nuxt',
         '@nuxtjs/sanity',
         '@vueuse/nuxt',
         '@nuxt/image',
-        'nuxt-icon',
     ],
+
+    routeRules: {
+    },
 
     typescript: {
         typeCheck: 'build',
@@ -25,17 +25,13 @@ export default defineNuxtConfig({
     },
 
     css: [
-        '~/assets/css/main.css',
         '../ui/assets/css/tailwind.css',
+        '~/assets/css/main.css',
     ],
 
     sanity: {
         projectId: process.env.SANITY_STUDIO_PROJECT_ID,
         apiVersion: 'v2023-06-21',
-    },
-
-    colorMode: {
-        classSuffix: '',
     },
 
     devtools: { enabled: true },

@@ -1,14 +1,7 @@
 <script setup lang="ts">
 import type { ResolvedSanityImage } from '@sanity/asset-utils'
 
-const query = groq`
-*[_id == "instantFilms"].instantFilms[]{
-    ...,
-    asset->
-}
-`
-
-const { data } = await useSanityQuery<ResolvedSanityImage[]>(query)
+const { data } = await useFetch<ResolvedSanityImage[]>('/api/instant-films')
 
 const instantFilms = computed(() => data.value?.map(image => ({
     image,
@@ -38,7 +31,7 @@ const instantFilms = computed(() => data.value?.map(image => ({
                     Painting tales with light.
                 </h1>
 
-                <p class="xs:text-sm sm:text-base text-center lg:text-left lg:text-lg xl:text-xl lg:leading-snug">
+                <p class="text-muted-foreground xs:text-sm sm:text-base text-center lg:text-left lg:text-lg xl:text-xl lg:leading-snug">
                     I'm a front-end engineer and photographer who loves creating captivating websites and capturing beautiful moments.
                     Explore my creations on this website and enjoy!
                 </p>
