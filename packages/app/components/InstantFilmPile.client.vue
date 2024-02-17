@@ -33,17 +33,15 @@ let draggingInfo: null | { i: number, movementX: number, vx: number, cancel: () 
  and releases the mouse before the interaction can catch up.
  To address this, we listen to the document's `pointerup` event to ensure the interaction is properly completed.
  */
-onMounted(() => {
-    useEventListener(document, 'pointerup', async () => {
-        await promiseTimeout(0) // determine after `handleDrag` is called
-        if (draggingInfo) {
-            const { i, movementX, vx, cancel } = draggingInfo
-            goneCards.add(i)
-            draggingInfo = null
-            cancel()
-            moveCardOutOfScreen(i, movementX, vx)
-        }
-    })
+useEventListener(document, 'pointerup', async () => {
+    await promiseTimeout(0) // determine after `handleDrag` is called
+    if (draggingInfo) {
+        const { i, movementX, vx, cancel } = draggingInfo
+        goneCards.add(i)
+        draggingInfo = null
+        cancel()
+        moveCardOutOfScreen(i, movementX, vx)
+    }
 })
 
 function handleDrag(i: number) {
