@@ -9,6 +9,19 @@ export default defineType({
             name: 'name',
             type: 'internationalizedArrayString',
             title: 'Gallery name',
+            validation: Rule => Rule
+                .required()
+                .custom((name: { value: string }[]) => !!name?.[0].value || 'Name is required'),
+        }),
+        defineField({
+            name: 'slug',
+            type: 'slug',
+            title: 'Slug',
+            options: {
+                source: 'name.0.value',
+                maxLength: 200,
+            },
+            validation: Rule => Rule.required(),
         }),
         defineField({
             name: 'description',

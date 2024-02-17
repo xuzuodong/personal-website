@@ -26,7 +26,7 @@ watch(() => colorMode.value, (value) => {
     <div
         class="dark:border-b shadow-lg dark:shadow-none h-[60px]"
     >
-        <div class="hidden lg:flex h-full container justify-between items-center">
+        <div class="hidden md:flex h-full container justify-between items-center">
             <nuxt-link to="/">
                 <nuxt-img src="/avatar.jpg" width="40" height="40" class="rounded-full" />
             </nuxt-link>
@@ -55,7 +55,7 @@ watch(() => colorMode.value, (value) => {
             <app-switch-theme />
         </div>
 
-        <div class="px-4 h-full flex lg:hidden justify-between items-center">
+        <div class="px-4 h-full flex md:hidden justify-between items-center">
             <nuxt-link to="/" class="z-20" @click="isMobileMenuOpen && (isMobileMenuOpen = false)">
                 <nuxt-img src="/avatar.jpg" width="32" height="32" class="rounded-full" />
             </nuxt-link>

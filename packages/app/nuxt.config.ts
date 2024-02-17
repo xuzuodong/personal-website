@@ -9,6 +9,7 @@ export default defineNuxtConfig({
         '@nuxtjs/sanity',
         '@vueuse/nuxt',
         '@nuxt/image',
+        '@nuxtjs/google-fonts',
     ],
 
     routeRules: {
@@ -24,14 +25,22 @@ export default defineNuxtConfig({
         },
     },
 
+    sanity: {
+        projectId: process.env.SANITY_STUDIO_PROJECT_ID,
+        apiVersion: 'v2023-06-21',
+    },
+
     css: [
         '../ui/assets/css/tailwind.css',
         '~/assets/css/main.css',
     ],
 
-    sanity: {
-        projectId: process.env.SANITY_STUDIO_PROJECT_ID,
-        apiVersion: 'v2023-06-21',
+    googleFonts: {
+        families: {
+            'Playfair Display': 700,
+            'BenchNine': 700,
+        },
+        display: 'block',
     },
 
     devtools: { enabled: true },

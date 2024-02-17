@@ -28,6 +28,13 @@ importers:
         version: 5.3.3
 
   packages/app:
+    dependencies:
+      '@nuxtjs/google-fonts':
+        specifier: ^3.1.3
+        version: 3.1.3
+      photoswipe:
+        specifier: ^5.4.3
+        version: 5.4.3
     devDependencies:
       '@nuxt/devtools':
         specifier: latest
@@ -2505,6 +2512,17 @@ packages:
       - rollup
       - supports-color
     dev: true
+
+  /@nuxtjs/google-fonts@3.1.3:
+    resolution: {integrity: sha512-gHwstHXQKd/r9O2WnQR4UJbi7Rfb9No1/gF4gqP+y18h1DAAZUOYPBF5EAPGjZKgDOW2XbZHP8Rw3oSDTpIT1A==}
+    dependencies:
+      '@nuxt/kit': 3.10.2
+      google-fonts-helper: 3.4.1
+      pathe: 1.1.2
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: false
 
   /@nuxtjs/sanity@1.8.3:
     resolution: {integrity: sha512-gXfiPT4ycHOcr4ruTSk98wCS6oN2JTVeLGenq5R5SQ9xwYSz28h7y2P56XjRGHdG8xDq6jEklHB9yvrlH6253g==}
@@ -7005,6 +7023,15 @@ packages:
     resolution: {integrity: sha512-YSwLaGMOgSBx9roJlNLL12c+FRiw7VECphinc6mGucphc/ZxTHgdEz6gmJqH6NOzYEd/yr64hwjom5pZ+tJVpg==}
     dev: false
 
+  /google-fonts-helper@3.4.1:
+    resolution: {integrity: sha512-unq9c1NF771916DrVR2MTpMJ5iHiMSjMBApErjhWT1FZIE+7x+Qik+w6cYi5jw/KtHELz+tyGAKgQetTU9wrlA==}
+    dependencies:
+      deepmerge: 4.3.1
+      hookable: 5.5.3
+      ofetch: 1.3.3
+      ufo: 1.4.0
+    dev: false
+
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
     dependencies:
@@ -9442,6 +9469,11 @@ packages:
 
   /performance-now@2.1.0:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
+    dev: false
+
+  /photoswipe@5.4.3:
+    resolution: {integrity: sha512-9UC6oJBK4oXFZ5HcdlcvGkfEHsVrmE4csUdCQhEjHYb3PvPLO3PG7UhnPuOgjxwmhq5s17Un5NUdum01LgBDng==}
+    engines: {node: '>= 0.12.0'}
     dev: false
 
   /picocolors@1.0.0:
