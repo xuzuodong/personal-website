@@ -10,6 +10,5 @@ const query = groq`
 export default defineCachedEventHandler(async () => {
     return await useSanity().fetch<ResolvedSanityImage[]>(query)
 }, {
-    maxAge: 60 * 60,
     staleMaxAge: 60 * 60,
 })
