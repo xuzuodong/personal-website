@@ -25,6 +25,8 @@ onMounted(() => {
         pswpModule: () => import('photoswipe'),
         loop: false,
         tapAction: 'close',
+        initialZoomLevel: 'fit',
+        secondaryZoomLevel: 'fit',
     })
     lightbox.init()
 })
@@ -50,6 +52,7 @@ onUnmounted(() => {
                             :href="urlFor(item.asset).url()"
                             :data-pswp-width="item.asset.metadata.dimensions.width"
                             :data-pswp-height="item.asset.metadata.dimensions.height"
+                            data-cropped="true"
                             target="_blank"
                             class="block relative w-full h-full pb-[100%] overflow-hidden" :style="{ backgroundImage: `url(${item.asset.metadata.lqip!})` }"
                         >
