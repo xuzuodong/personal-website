@@ -9,11 +9,17 @@
 
 ## Vercel Deployment
 
+Feel free to fork this repo and deploy your own version. Note that there should be two projects deployed on Vercel: the **main website** and the **Santiy studio** for content management.
+
 ### Environment Variables
 
-Set following environment variable to your Vercel project, so that Vercel Edge function rewrites requests to your Sanity Studio you deployed.
+1. Set following environment variable to  **both** of your Vercel projects:
 
-Note that you should replace the value to your own domin.
+```bash
+SANITY_STUDIO_PROJECT_ID=
+```
+
+2. Set following environment variable to your Vercel **main website** project, so that Vercel Edge function rewrites requests start with `/studio` to the Sanity studio site you deployed. Note that you should replace the value to your own domin.
 
 ```bash
 SANITY_STUDIO_SITE_DOMAIN=https://some-sanity-studio.vercel.app
