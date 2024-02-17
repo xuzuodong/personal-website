@@ -8,7 +8,7 @@
   ],
   "main": "package.json",
   "scripts": {
-    "dev": "sanity dev",
+    "dev": "env-cmd -f ../../.env sanity dev",
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
