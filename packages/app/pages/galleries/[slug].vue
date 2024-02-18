@@ -54,11 +54,12 @@ onUnmounted(() => {
                             :data-pswp-height="item.asset.metadata.dimensions.height"
                             data-cropped="true"
                             target="_blank"
-                            class="block relative w-full h-full pb-[100%] overflow-hidden" :style="{ backgroundImage: `url(${item.asset.metadata.lqip!})` }"
+                            class="block relative w-full h-full pb-[100%] overflow-hidden"
                         >
                             <img
                                 :src="`${src}`"
                                 class="bg-cover w-full h-full object-cover absolute top-0 left-0"
+                                :style="{ backgroundImage: `url(${item.asset.metadata.lqip!})` }"
                             />
                         </a>
                     </figure>
