@@ -29,8 +29,8 @@ export default defineNuxtConfig({
     image: {
         format: ['webp', 'jpeg', 'jpg'],
         providers: {
-            myProvider: {
-                name: 'santiy',
+            mySanity: {
+                name: 'mySanity',
                 provider: '~/providers/sanity.ts',
                 options: {
                     projectId: process.env.SANITY_STUDIO_PROJECT_ID,

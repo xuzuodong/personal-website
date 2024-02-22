@@ -11,7 +11,7 @@ const props = defineProps<{
         <div v-bind="$attrs" class="relative h-full">
             <div class="image-wrapper h-full">
                 <nuxt-img
-                    provider="santiy"
+                    provider="mySanity"
                     :src="item.coverImage.asset._id"
                     fit="cover" width="330px" height="330px" densities="x1 x2"
                     :placeholder="item.coverImage.asset.metadata.lqip!"
