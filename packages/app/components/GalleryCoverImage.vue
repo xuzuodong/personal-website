@@ -10,11 +10,12 @@ const props = defineProps<{
     <nuxt-link :to="`/galleries/${item.slug}`">
         <div v-bind="$attrs" class="relative h-full">
             <div class="image-wrapper h-full">
-                <sanity-image
-                    :asset-id="item.coverImage.asset._id"
-                    fit="crop" dpr="3" w="300" h="300"
-                    :style="{ backgroundImage: `url(${item.coverImage.asset.metadata.lqip!})` }"
-                    class="bg-cover h-full"
+                <nuxt-img
+                    provider="santiy"
+                    :src="item.coverImage.asset._id"
+                    fit="cover" width="330px" height="330px" densities="x1 x2"
+                    :placeholder="item.coverImage.asset.metadata.lqip!"
+                    class="bg-cover h-full w-full"
                 />
             </div>
             <div class="z-[2] absolute bottom-0 w-full px-6 py-5 font-serif text-center text-xl font-bold">

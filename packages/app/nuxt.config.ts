@@ -12,7 +12,31 @@ export default defineNuxtConfig({
         '@nuxtjs/google-fonts',
     ],
 
+    runtimeConfig: {
+        public: {
+            sanityImageBaseUrl: '',
+        },
+    },
+
     routeRules: {
+        '/sanity-image/**': { proxy: 'https://cdn.sanity.io/images/**' },
+    },
+
+    imports: {
+        dirs: ['providers'],
+    },
+
+    image: {
+        format: ['webp', 'jpeg', 'jpg'],
+        providers: {
+            myProvider: {
+                name: 'santiy',
+                provider: '~/providers/sanity.ts',
+                options: {
+                    projectId: process.env.SANITY_STUDIO_PROJECT_ID,
+                },
+            },
+        },
     },
 
     typescript: {
