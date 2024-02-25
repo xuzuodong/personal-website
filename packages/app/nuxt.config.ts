@@ -19,6 +19,12 @@ export default defineNuxtConfig({
     },
 
     routeRules: {
+        '/photography': {
+            cache: {
+                maxAge: 0,
+                staleMaxAge: 10,
+            },
+        },
         '/sanity-image/**': { proxy: 'https://cdn.sanity.io/images/**' },
     },
 
