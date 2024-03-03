@@ -35,9 +35,9 @@ onUnmounted(() => {
 
 <template>
     <div v-if="data" class="mt-12">
-        <h3 class="text-center text-2xl font-bold">{{ data.name[0].value }}</h3>
+        <h3 class="text-center text-2xl font-bold">{{ $sanityI18n(data.name) }}</h3>
 
-        <p class="pt-6 pb-4 text-muted-foreground px-4 md:px-16 2xl:px-20">{{ data.description[0].value }}</p>
+        <p class="pt-6 pb-4 text-muted-foreground px-4 md:px-16 2xl:px-20">{{ $sanityI18n(data.description) }}</p>
 
         <div id="photoswipe" class="mt-6 pb-12 flex flex-wrap justify-center gap-2">
             <figure v-for="item in data.images" :key="item.asset._id" class="item relative block">

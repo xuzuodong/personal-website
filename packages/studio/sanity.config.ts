@@ -28,7 +28,8 @@ const config = defineConfig({
         internationalizedArray({
             languages: [
                 { id: 'en', title: 'English' },
-                { id: 'zh', title: '简体中文' },
+                { id: 'zh-CN', title: '简体中文' },
+                { id: 'zh-TW', title: '繁體中文' },
             ],
             defaultLanguages: ['en'],
             fieldTypes: ['string', 'text'],

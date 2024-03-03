@@ -4,10 +4,12 @@ import type { GalleryListItem } from '~/server/api/galleries/index.get'
 const props = defineProps<{
     item: GalleryListItem
 }>()
+
+const localePath = useLocalePath()
 </script>
 
 <template>
-    <nuxt-link :to="`/galleries/${item.slug}`">
+    <nuxt-link :to="localePath(`/galleries/${item.slug}`)">
         <div v-bind="$attrs" class="relative h-full">
             <div class="image-wrapper h-full">
                 <nuxt-img
@@ -19,7 +21,7 @@ const props = defineProps<{
                 />
             </div>
             <div class="z-[2] absolute bottom-0 w-full px-6 py-5 font-serif text-center text-xl font-bold">
-                <h3 class="mb-2.5 text-white font-[Playfair Display]">{{ item.name[0].value }}</h3>
+                <h3 class="mb-2.5 text-white font-[Playfair Display]">{{ $sanityI18n(item.name) }}</h3>
                 <p class="mb-2.5 text-gray-300 text-sm font-[BenchNine]">- {{ item.imageCount }} PHOTOS -</p>
             </div>
         </div>

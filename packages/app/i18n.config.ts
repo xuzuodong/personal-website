@@ -5,4 +5,8 @@ export default defineI18nConfig(() => ({
     locale: 'en',
     messages,
     ssr: true,
+    fallbackLocale: {
+        'zh-TW': ['zh-CN', 'en'],
+        'zh-CN': ['zh-TW', 'en'],
+    },
 }))
