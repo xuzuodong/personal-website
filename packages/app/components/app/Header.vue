@@ -1,9 +1,11 @@
 <script setup lang="ts">
+const localePath = useLocalePath()
+
 const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Photography', path: '/photography' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'About', path: '/about' },
+    { name: 'app.home', path: '/' },
+    { name: 'app.photography', path: '/photography' },
+    { name: 'app.projects', path: '/projects' },
+    { name: 'app.about', path: '/about' },
 ]
 
 const isMobileMenuOpen = ref(false)
@@ -23,28 +25,25 @@ watch(() => colorMode.value, (value) => {
 </script>
 
 <template>
-    <div
+    <header
         class="dark:border-b shadow-lg dark:shadow-none h-[60px]"
     >
         <div class="hidden md:flex h-full container justify-between items-center">
-            <nuxt-link to="/">
+            <nuxt-link :to="localePath('/')">
                 <nuxt-img src="/avatar.jpg" width="40" height="40" class="rounded-full" />
             </nuxt-link>
 
             <div class="flex items-center space-x-4">
                 <ui-navigation-menu>
                     <ui-navigation-menu-list>
-                        <ui-navigation-menu-item
-                            v-for="item in navItems"
-                            :key="item.path"
-                        >
+                        <ui-navigation-menu-item v-for="item in navItems" :key="item.path">
                             <ui-navigation-menu-link as-child>
-                                <nuxt-link
-                                    :to="item.path"
-                                    class="text-muted-foreground"
-                                    exact-active-class="text-primary"
-                                >
-                                    <ui-button variant="ghost">{{ item.name }}</ui-button>
+                                <nuxt-link :to="localePath(item.path)" class="text-muted-foreground">
+                                    <template #default="{ isActive }">
+                                        <ui-button :variant="isActive ? 'secondary' : 'ghost'">
+                                            {{ $te(item.name) ? $t(item.name) : item.name }}
+                                        </ui-button>
+                                    </template>
                                 </nuxt-link>
                             </ui-navigation-menu-link>
                         </ui-navigation-menu-item>
@@ -52,19 +51,22 @@ watch(() => colorMode.value, (value) => {
                 </ui-navigation-menu>
             </div>
 
-            <app-switch-theme />
+            <div class="flex gap-1">
+                <app-switch-theme />
+                <app-switch-locale />
+            </div>
         </div>
 
         <div class="px-4 h-full flex md:hidden justify-between items-center">
-            <nuxt-link to="/" class="z-20" @click="isMobileMenuOpen && (isMobileMenuOpen = false)">
+            <nuxt-link :to="localePath('/')" class="z-20" @click="isMobileMenuOpen && (isMobileMenuOpen = false)">
                 <nuxt-img src="/avatar.jpg" width="32" height="32" class="rounded-full" />
             </nuxt-link>
 
             <app-header-burger v-model="isMobileMenuOpen" class="z-20" />
         </div>
-    </div>
+    </header>
 
-    <div
+    <header
         v-if="isMobileMenuOpen"
         v-motion="'menu'"
         :initial="{
@@ -94,16 +96,19 @@ watch(() => colorMode.value, (value) => {
                     v-motion
                     :initial="{ opacity: 0 }"
                     :enter="{ opacity: 1, transition: { duration: 500 } }"
-                    :to="item.path"
-                    class="text-gray-7 dark:text-white h-12 leading-[3rem]" exact
+                    :to="localePath(item.path)"
+                    class="h-12 leading-[3rem]" exact
                 >
-                    {{ item.name }}
+                    <template #default="{ isActive }">
+                        <span :class="isActive && 'font-bold'">{{ $te(item.name) ? $t(item.name) : item.name }}</span>
+                    </template>
                 </nuxt-link>
             </div>
 
             <div class="pt-8">
-                <app-switch-theme @click.stop />
+                <app-switch-theme />
+                <app-switch-locale />
             </div>
         </div>
-    </div>
+    </header>
 </template>

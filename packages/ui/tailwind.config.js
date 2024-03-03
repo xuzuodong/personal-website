@@ -5,17 +5,6 @@ module.exports = {
     darkMode: 'class',
     theme: {
         extend: {
-            container: {
-                center: true,
-                padding: {
-                    DEFAULT: '1rem',
-                    sm: '2rem',
-                    lg: '4rem',
-                },
-                screens: {
-                    '2xl': '1440px',
-                },
-            },
             fontFamily: {
                 sans: ['Inter var', 'Inter', ...fontFamily.sans],
             },

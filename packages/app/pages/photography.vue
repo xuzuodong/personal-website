@@ -6,7 +6,7 @@ const { data } = await useFetch<GalleryListItem[]>('/api/galleries')
 
 <template>
     <div class="mt-12">
-        <h2 class="text-2xl text-center">Galleries</h2>
+        <h2 class="text-2xl text-center">{{ $t('photography.galleries') }}</h2>
 
         <div class="mt-8 flex flex-wrap justify-center lg:justify-normal gap-4">
             <div v-for="item in data" :key="item.id" class="item aspect-square">

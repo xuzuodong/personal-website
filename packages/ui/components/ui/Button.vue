@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from 'vue-router'
 
-  type ButtonProps = VariantProps<typeof buttonStyles>
+type ButtonProps = VariantProps<typeof buttonStyles>
+
 const props = withDefaults(
     defineProps<{
         /** The type fro the button */

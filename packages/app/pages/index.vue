@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ResolvedSanityImage } from '@sanity/asset-utils'
 
+const localePath = useLocalePath()
+
 const { data } = await useFetch<ResolvedSanityImage[]>('/api/instant-films')
 
 const instantFilms = computed(() => data.value?.map(image => ({
@@ -22,22 +24,18 @@ const instantFilms = computed(() => data.value?.map(image => ({
         <div class="flex flex-col justify-center lg:basis-1/2 xl:basis-3/5">
             <div class="hidden lg:flex items-center space-x-1">
                 <icon name="tdesign:location" />
-                <p>Hangzhou, China</p>
+                <p>{{ $t('home.location') }}</p>
             </div>
 
             <div class="h-3/5 flex flex-col justify-center space-y-6 lg:space-y-10">
-                <h1>
-                    Scripting realities in bytes, <br />
-                    Painting tales with light.
-                </h1>
+                <h1 class="whitespace-pre">{{ $t('home.headline') }}</h1>
 
                 <p class="text-muted-foreground xs:text-sm sm:text-base text-center lg:text-left lg:text-lg xl:text-xl lg:leading-snug">
-                    I'm a front-end engineer and photographer who loves creating captivating websites and capturing beautiful moments.
-                    Explore my creations on this website and enjoy!
+                    {{ $t('home.subhead') }}
                 </p>
 
-                <div>
-                    <ui-button>Explore More</ui-button>
+                <div class="self-center lg:self-start">
+                    <ui-button :to="localePath('/about')">{{ $t('home.explore-more') }}</ui-button>
                 </div>
             </div>
         </div>
