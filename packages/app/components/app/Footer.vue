@@ -30,7 +30,7 @@
                     </a>
                     <span> </span> &amp; <span> </span>
                     <a
-                        href="https://vercel.com/home"
+                        href="https://nuxt.com"
                         rel="noopener noreferrer"
                         target="_blank"
                     >
