@@ -66,10 +66,10 @@ function handleSwitchTheme(e: MouseEvent) {
 </script>
 
 <template>
-    <button type="button" @click="handleSwitchTheme">
+    <ui-button variant="ghost" size="icon" @click="handleSwitchTheme">
         <icon
             :name="colorMode.value === 'dark' ? 'tdesign:mode-light' : 'tdesign:mode-dark'"
             size="20"
         />
-    </button>
+    </ui-button>
 </template>
