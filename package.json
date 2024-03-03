@@ -3,6 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules .nuxt",
     "dev": "pnpm --filter app dev",
     "dev:studio": "pnpm --filter studio dev",
     "build": "pnpm --filter app build",

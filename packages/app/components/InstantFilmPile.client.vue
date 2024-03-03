@@ -90,8 +90,8 @@ whenever(() => goneCards.size === props.instantFilms.length, async () => {
             :enter="enterVariant(i)"
             :class="goneCards.size === instantFilms.length - i - 1 ? 'pointer-events-auto' : 'pointer-events-none'"
         >
-            <sanity-image
-                :asset-id="card.image.asset._id" :w="720" :h="720"
+            <nuxt-img
+                provider="mySanity" :src="card.image.asset._id" :width="720" :height="720"
                 :class="[
                     card.orientation === 'landscape'
                         ? 'w-[224px] h-[168px] md:w-[256px] md:h-[192px] 2xl:w-[320px] 2xl:h-[240px]'

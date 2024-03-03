@@ -12,7 +12,37 @@ export default defineNuxtConfig({
         '@nuxtjs/google-fonts',
     ],
 
+    runtimeConfig: {
+        public: {
+            sanityImageBaseUrl: '',
+        },
+    },
+
     routeRules: {
+        '/photography': {
+            cache: {
+                maxAge: 0,
+                staleMaxAge: 10,
+            },
+        },
+        '/sanity-image/**': { proxy: 'https://cdn.sanity.io/images/**' },
+    },
+
+    imports: {
+        dirs: ['providers'],
+    },
+
+    image: {
+        format: ['webp', 'jpeg', 'jpg'],
+        providers: {
+            mySanity: {
+                name: 'mySanity',
+                provider: '~/providers/sanity.ts',
+                options: {
+                    projectId: process.env.SANITY_STUDIO_PROJECT_ID,
+                },
+            },
+        },
     },
 
     typescript: {
