@@ -41,7 +41,7 @@ onUnmounted(() => {
     <div v-if="data" class="mt-12">
         <h3 class="text-center text-2xl font-bold">{{ data.name[0].value }}</h3>
 
-        <div id="photoswipe" class="mt-6 pb-12 flex flex-wrap justify-center gap-4">
+        <div id="photoswipe" class="mt-6 pb-12 flex flex-wrap justify-center gap-2">
             <sanity-image
                 v-for="item in data.images" :key="item.asset._id"
                 :asset-id="item.asset._id" w="340" :dpr="3"
@@ -73,6 +73,6 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .item {
-    @apply flex-1 min-w-[195px] sm:min-w-[270px] max-w-[340px];
+    @apply flex-1 min-w-[44%] sm:min-w-[28%] md:min-w-[23%] max-w-[340px];
 }
 </style>
