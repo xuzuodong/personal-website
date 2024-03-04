@@ -22,7 +22,7 @@
                     Powered by
                     <span> </span>
                     <a
-                        href="https://nextjs.org/"
+                        href="https://nuxt.com/"
                         rel="noopener noreferrer"
                         target="_blank"
                     >
@@ -30,7 +30,7 @@
                     </a>
                     <span> </span> &amp; <span> </span>
                     <a
-                        href="https://nuxt.com"
+                        href="https://vercel.com/home"
                         rel="noopener noreferrer"
                         target="_blank"
                     >
