@@ -15,7 +15,8 @@ export default defineNuxtPlugin({
 
         return {
             provide: {
-                sanityI18n: (values: Value[]) => {
+                sanityI18n: (values?: Value[]) => {
+                    if (!values) return
                     const locale = $i18n.locale.value
                     const locales = [locale]
                     if (Array.isArray(fallbackLocale[locale])) {

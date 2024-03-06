@@ -8,6 +8,16 @@ const route = useRoute()
 
 const { data } = await useFetch<Gallery | null>(`/api/galleries/` + `${route.params.slug}`)
 
+const { t } = useI18n()
+const { $sanityI18n } = useNuxtApp()
+
+useHead({
+    title: $sanityI18n(data.value?.name),
+    titleTemplate: title => title
+        ? `${title} - ${t('app.title')}${t('photography.titleAffix')}`
+        : `${t('app.title')}${t('photography.titleAffix')}`,
+})
+
 let lightbox: any
 
 const img = useImage()

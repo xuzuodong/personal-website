@@ -12,7 +12,7 @@ const switchLocalePath = useSwitchLocalePath()
                 </ui-button>
             </ui-dropdown-menu-trigger>
             <ui-dropdown-menu-content class="w-[48px]">
-                <nuxt-link v-for="l in locales" :key="l.code" :to="switchLocalePath(l.code)">
+                <nuxt-link v-for="l in locales" :key="l.code" :to="switchLocalePath(l.code)" replace>
                     <ui-dropdown-menu-item
                         class="leading-[32px]"
                         :class="locale === l.code ? 'font-bold' : 'text-muted-foreground'"
