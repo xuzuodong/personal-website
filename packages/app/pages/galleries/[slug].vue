@@ -4,6 +4,10 @@ import 'photoswipe/style.css'
 
 import type { Gallery } from '~/server/api/galleries/[slug].get'
 
+definePageMeta({
+    scrollToTop: true,
+})
+
 const route = useRoute()
 
 const { data } = await useFetch<Gallery | null>(`/api/galleries/` + `${route.params.slug}`)
