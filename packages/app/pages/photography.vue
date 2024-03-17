@@ -16,7 +16,7 @@ const { data } = await useFetch<GalleryListItem[]>('/api/galleries')
 
         <div class="mt-8 flex flex-wrap justify-center lg:justify-normal gap-4">
             <div v-for="item in data" :key="item.id" class="item aspect-square">
-                <gallery-cover-image :item="item" />
+                <galleries-cover-image :item="item" />
             </div>
             <div v-for="i in 8" :key="i" class="item"></div>
         </div>
