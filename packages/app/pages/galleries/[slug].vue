@@ -81,8 +81,7 @@ onUnmounted(() => {
                         :style="{ backgroundImage: `url(${item.asset.metadata.lqip!})` }"
                     />
                     <div v-if="item.asset.metadata.exif" class="pswp-caption-content">
-                        <p class="text-nowrap font-semibold font-gray-200 mb-2">{{ (item.asset.metadata.exif as any).LensModel }}</p>
-
+                        <p class="font-semibold font-gray-200 mb-2">{{ (item.asset.metadata.exif as any).LensModel }}</p>
                         <galleries-shooting-parameters :exif="item.asset.metadata.exif" />
                     </div>
                 </a>
