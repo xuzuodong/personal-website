@@ -6,7 +6,7 @@ const props = defineProps<{
 
 <template>
     <div class="text-gray-400 text-sm mb-4">
-        <div class="flex flex-wrap space-x-2">
+        <div class="flex flex-nowrap space-x-2 text-nowrap">
             <span>{{ exif.FocalLengthIn35mmFormat }}mm</span>
             <span>ƒ{{ exif.FNumber }}</span>
             <span>{{ exif.ExposureTime < 1 ? decimalToFraction(exif.ExposureTime) : exif.ExposureTime }}s</span>
