@@ -21,7 +21,7 @@ const localePath = useLocalePath()
                 />
             </div>
             <div class="z-[2] absolute bottom-0 w-full px-6 py-5 font-serif text-center text-xl font-bold">
-                <h3 class="mb-2.5 text-white font-[Playfair Display]">{{ $sanityI18n(item.name) }}</h3>
+                <h3 class="mb-2.5 text-white font-[Playfair_Display]">{{ $sanityI18n(item.name) }}</h3>
                 <p class="mb-2.5 text-gray-300 text-sm font-[BenchNine]">- {{ item.imageCount }} PHOTOS -</p>
             </div>
         </div>

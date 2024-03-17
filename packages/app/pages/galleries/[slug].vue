@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
 import 'photoswipe/style.css'
+import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin'
+import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
 
 import type { Gallery } from '~/server/api/galleries/[slug].get'
 
@@ -38,6 +40,12 @@ onMounted(() => {
         initialZoomLevel: 'fit',
         secondaryZoomLevel: 1,
     })
+
+    // eslint-disable-next-line ts/no-unused-vars
+    const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+        type: 'auto',
+    })
+
     lightbox.init()
 })
 
@@ -72,6 +80,10 @@ onUnmounted(() => {
                         class="bg-cover w-full h-full object-cover absolute top-0 left-0"
                         :style="{ backgroundImage: `url(${item.asset.metadata.lqip!})` }"
                     />
+                    <div v-if="item.asset.metadata.exif" class="pswp-caption-content">
+                        <p class="font-semibold font-gray-200 mb-2">{{ (item.asset.metadata.exif as any).LensModel }}</p>
+                        <galleries-shooting-parameters :exif="item.asset.metadata.exif" />
+                    </div>
                 </a>
             </figure>
             <div v-for="i in 8" :key="i" class="item"></div>
