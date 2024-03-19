@@ -7,9 +7,9 @@ useHead({
 </script>
 
 <template>
-    <div class="min-h-full flex flex-col">
+    <div class="min-h-full flex flex-col overflow-x-hidden">
         <app-header />
-        <div class="container flex-1 overflow-x-hidden">
+        <div class="container flex-1">
             <slot></slot>
         </div>
         <app-footer />
