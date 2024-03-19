@@ -19,6 +19,9 @@ export default defineType({
                     storeOriginalFilename: false,
                 },
             })],
+            options: {
+                layout: 'grid',
+            },
         }),
     ],
 })

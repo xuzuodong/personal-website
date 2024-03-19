@@ -13,6 +13,7 @@ export default defineType({
                 .required()
                 .custom((name: { value: string }[]) => !!name?.[0].value || 'Name is required'),
         }),
+
         defineField({
             name: 'slug',
             type: 'slug',
@@ -23,11 +24,20 @@ export default defineType({
             },
             validation: Rule => Rule.required(),
         }),
+
         defineField({
-            name: 'description',
-            type: 'internationalizedArrayText',
-            title: 'Description',
+            name: 'releaseDate',
+            type: 'date',
+            title: 'Release date',
+            options: {
+                dateFormat: 'YYYY/MM/DD',
+            },
+            initialValue: () => {
+                const date = new Date()
+                return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+            },
         }),
+
         defineField({
             name: 'images',
             type: 'array',
@@ -42,6 +52,15 @@ export default defineType({
                     storeOriginalFilename: false,
                 },
             })],
+            options: {
+                layout: 'grid',
+            },
+        }),
+
+        defineField({
+            name: 'description',
+            type: 'internationalizedArrayText',
+            title: 'Description',
         }),
     ],
     preview: {

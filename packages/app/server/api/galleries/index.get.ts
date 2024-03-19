@@ -6,6 +6,7 @@ const query = groq`
     "id": _id,
     name,
     description,
+    releaseDate,
     _createdAt,
     _updatedAt,
     "slug": slug.current,
@@ -14,7 +15,7 @@ const query = groq`
         asset->
     },
     "imageCount": count(images)
-} | order(_updatedAt desc)`
+} | order(releaseDate desc, _updatedAt desc)`
 
 export interface GalleryListItem {
     id: string
