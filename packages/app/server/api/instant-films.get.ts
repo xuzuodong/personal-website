@@ -1,9 +1,9 @@
 import type { ResolvedSanityImage } from '@sanity/asset-utils'
 
 const query = groq`
-*[_id == "instantFilms"].instantFilms[]{
+*[_id == "instantFilms"].instantFilms[-5..-1]{
     ...,
-    asset->
+    asset->,
 }
 `
 
