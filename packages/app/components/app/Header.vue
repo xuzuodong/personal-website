@@ -4,7 +4,7 @@ const localePath = useLocalePath()
 const navItems = [
     { name: 'app.home', path: '/' },
     { name: 'app.photography', path: '/photography' },
-    { name: 'app.projects', path: '/projects' },
+    // { name: 'app.projects', path: '/projects' },
     { name: 'app.about', path: '/about' },
 ]
 

@@ -35,7 +35,7 @@ const instantFilms = computed(() => data.value?.map(image => ({
                 </p>
 
                 <div class="self-center lg:self-start">
-                    <ui-button :to="localePath('/about')">{{ $t('home.explore-more') }}</ui-button>
+                    <ui-button :to="localePath('/photography')">{{ $t('home.explore-more') }}</ui-button>
                 </div>
             </div>
         </div>
