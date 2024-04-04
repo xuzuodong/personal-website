@@ -9,7 +9,7 @@ useHead({
 <template>
     <div class="min-h-full flex flex-col overflow-x-hidden">
         <app-header />
-        <div class="container flex-1">
+        <div class="flex-1">
             <slot></slot>
         </div>
         <app-footer />

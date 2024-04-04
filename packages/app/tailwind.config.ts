@@ -1,8 +1,14 @@
+import defaultTheme from 'tailwindcss/defaultTheme'
+
 import type { Config } from 'tailwindcss'
 
 export default <Partial<Config>>{
     darkMode: 'class',
     theme: {
+        screens: {
+            xs: '475px',
+            ...defaultTheme.screens,
+        },
         container: {
             center: true,
             padding: {
