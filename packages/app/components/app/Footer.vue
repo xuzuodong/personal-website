@@ -10,13 +10,14 @@
                     <div class="text-xs flex items-center space-x-1.5">
                         <span>© {{ new Date().getFullYear() }}</span>
                         <span>Ted Xu</span>
-                        <a
-                            href="https://github.com/xuzuodong/personal-website"
-                            target="_blank"
-                            class="rounded p-[2px] transition hover:scale-105 hover:shadow"
-                        >
-                            <icon name="mdi:github" size="20" />
-                        </a>
+                        <ui-button variant="ghost" class="h-7 w-7 p-0">
+                            <a
+                                href="https://github.com/xuzuodong/personal-website"
+                                target="_blank"
+                            >
+                                <icon name="mdi:github" size="20" />
+                            </a>
+                        </ui-button>
                     </div>
                 </div>
                 <p class="text-xs inline">
