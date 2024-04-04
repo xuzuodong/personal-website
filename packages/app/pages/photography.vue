@@ -11,15 +11,15 @@ const { data } = await useFetch<GalleryListItem[]>('/api/galleries')
 </script>
 
 <template>
-    <div class="mt-12 px-4 max-w-[1200px] mx-auto">
-        <h2 class="text-center text-2xl font-bold">{{ $t('photography.galleries') }}</h2>
-
-        <div class="mt-8 flex flex-wrap justify-center lg:justify-normal gap-4">
-            <div v-for="item in data" :key="item.id" class="cover aspect-square">
-                <galleries-cover :item="item" />
+    <div>
+        <app-section :title="$t('photography.galleries') " class="px-4 max-w-[1200px] mx-auto">
+            <div class="mt-8 flex flex-wrap justify-center lg:justify-normal gap-4">
+                <div v-for="item in data" :key="item.id" class="cover aspect-square">
+                    <galleries-cover :item="item" />
+                </div>
+                <div v-for="i in 8" :key="i" class="cover"></div>
             </div>
-            <div v-for="i in 8" :key="i" class="cover"></div>
-        </div>
+        </app-section>
     </div>
 </template>
 

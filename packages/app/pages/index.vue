@@ -16,7 +16,7 @@ const instantFilms = computed(() => data.value?.map(image => ({
 <template>
     <div
         class="
-            min-h-[calc(max(540px,60%))]
+            container min-h-[calc(max(540px,60%))]
             flex flex-col-reverse lg:flex-row lg:space-x-4 xl:space-x-12
             [&>*]:w-full
         "

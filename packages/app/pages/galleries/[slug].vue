@@ -56,8 +56,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div v-if="data" class="mt-12">
-        <h3 class="text-center text-2xl font-bold">{{ $sanityI18n(data.name) }}</h3>
+    <div v-if="data" class="mt-12 px-2">
+        <h3 class="px-2 text-center text-2xl font-bold">{{ $sanityI18n(data.name) }}</h3>
 
         <p class="pt-6 pb-4 text-muted-foreground px-4 md:px-16 2xl:px-20">{{ $sanityI18n(data.description) }}</p>
 

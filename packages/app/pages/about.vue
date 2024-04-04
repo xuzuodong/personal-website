@@ -7,9 +7,9 @@ useHead({
 </script>
 
 <template>
-    <div class="mt-12">
-        <h2 class="text-center text-2xl font-bold mb-4">{{ $t('app.about') }}</h2>
-
-        <p class="mx-auto max-w-[600px]">{{ $t('about.desc') }}</p>
+    <div class="container">
+        <app-section :title="$t('app.about')">
+            <p>{{ $t('about.desc') }}</p>
+        </app-section>
     </div>
 </template>
