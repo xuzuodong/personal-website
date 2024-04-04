@@ -68,15 +68,21 @@ const localePath = useLocalePath()
     }
 }
 
-.image-wrapper:after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 40%;
-    bottom: -1px;
-    left: 0;
-    transition: height .5s;
-    background: linear-gradient(0deg,#151515,hsla(0,0%,8%,0));
+.image-wrapper {
+        &::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 40%;
+            bottom: -1px;
+            left: 0;
+            transition: height .3s;
+            background: linear-gradient(0deg,#151515,hsla(0,0%,8%,0));
+    }
+
+    &:hover::after {
+        height: 30%;
+    }
 }
 </style>
