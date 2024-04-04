@@ -66,9 +66,8 @@ const localePath = useLocalePath()
         height: 7px;
         top: -14px;
     }
-}
 
-.image-wrapper {
+    .image-wrapper {
         &::after {
             content: "";
             position: absolute;
@@ -79,10 +78,13 @@ const localePath = useLocalePath()
             left: 0;
             transition: height .3s;
             background: linear-gradient(0deg,#151515,hsla(0,0%,8%,0));
+        }
     }
 
-    &:hover::after {
-        height: 30%;
+    &:hover {
+        .image-wrapper::after {
+            height: 30%;
+        }
     }
 }
 </style>
