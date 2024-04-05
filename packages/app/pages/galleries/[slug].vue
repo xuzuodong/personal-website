@@ -43,7 +43,7 @@ onMounted(() => {
 
     // eslint-disable-next-line ts/no-unused-vars
     const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-        type: 'auto',
+        type: 'below',
     })
 
     lightbox.init()
@@ -81,8 +81,7 @@ onUnmounted(() => {
                         :style="{ backgroundImage: `url(${item.asset.metadata.lqip!})` }"
                     />
                     <div v-if="item.asset.metadata.exif" class="pswp-caption-content">
-                        <p class="font-semibold font-gray-200 mb-2">{{ (item.asset.metadata.exif as any).LensModel }}</p>
-                        <galleries-shooting-parameters :exif="item.asset.metadata.exif" />
+                        <galleries-photo-caption :exif="item.asset.metadata.exif" />
                     </div>
                 </a>
             </figure>
