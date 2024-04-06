@@ -26,9 +26,22 @@ export default defineType({
         }),
 
         defineField({
-            name: 'releaseDate',
+            name: 'photographDate',
             type: 'date',
-            title: 'Release date',
+            title: 'Photograph date',
+            options: {
+                dateFormat: 'YYYY/MM/DD',
+            },
+            initialValue: () => {
+                const date = new Date()
+                return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+            },
+        }),
+
+        defineField({
+            name: 'publishDate',
+            type: 'date',
+            title: 'Publish date',
             options: {
                 dateFormat: 'YYYY/MM/DD',
             },

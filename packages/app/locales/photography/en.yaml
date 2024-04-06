@@ -1,3 +1,5 @@
 photography:
   galleries: Galleries
   titleAffix: '''s Gallery'
+  photographDate: Photographed on {createDate}
+  count: '{count} photos'

@@ -1,3 +1,5 @@
 photography:
   galleries: 相簿
   titleAffix: ' 的相簿'
+  photographDate: 拍攝於{createDate}
+  count: '{count} 張照片'

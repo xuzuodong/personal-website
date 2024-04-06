@@ -3,6 +3,7 @@ import type { Value } from 'sanity-plugin-internationalized-array'
 
 export interface Gallery {
     name: Value[]
+    photographDate: `${number}-${number}-${number}`
     description: Value[]
     images: ResolvedSanityImage[]
 }

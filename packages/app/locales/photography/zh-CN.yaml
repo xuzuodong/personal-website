@@ -1,3 +1,5 @@
 photography:
   galleries: 相册
   titleAffix: ' 的相册'
+  photographDate: 拍摄于{createDate}
+  count: '{count} 张照片'

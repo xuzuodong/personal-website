@@ -57,12 +57,27 @@ onUnmounted(() => {
 
 <template>
     <div v-if="data" class="mt-12 px-2">
-        <h3 class="px-2 text-center text-2xl font-bold">{{ $sanityI18n(data.name) }}</h3>
+        <h3 class="pb-2 px-2 text-center text-2xl font-bold">{{ $sanityI18n(data.name) }}</h3>
 
-        <p class="pt-6 pb-4 text-muted-foreground px-4 md:px-16 2xl:px-20">{{ $sanityI18n(data.description) }}</p>
+        <div class="pb-6 text-center text-sm text-muted-foreground flex justify-center space-x-2">
+            <p class="metadata-item">
+                <icon name="solar:album-linear" />
+                <span>{{ $t('photography.count', { count: data.images.length }) }}</span>
+            </p>
 
-        <div id="photoswipe" class="mt-6 pb-12 flex flex-wrap justify-center gap-2">
-            <figure v-for="item in data.images" :key="item.asset._id" class="item relative block">
+            <template v-if="data.photographDate">
+                <span>·</span>
+                <p class="metadata-item">
+                    <icon name="material-symbols:calendar-today-outline" />
+                    <span>{{ $t('photography.photographDate', { createDate: $d(new Date(data.photographDate), 'short') }) }}</span>
+                </p>
+            </template>
+        </div>
+
+        <p class="container pb-4">{{ $sanityI18n(data.description) }}</p>
+
+        <div id="photoswipe" class="container mt-6 pb-12 flex flex-wrap justify-center gap-2">
+            <figure v-for="item in data.images" :key="item.asset._id" class="photo relative block">
                 <a
                     :href="img(item.asset._id, {}, { provider: 'mySanity' })"
                     :data-pswp-width="item.asset.metadata.dimensions.width"
@@ -85,14 +100,18 @@ onUnmounted(() => {
                     </div>
                 </a>
             </figure>
-            <div v-for="i in 8" :key="i" class="item"></div>
+            <div v-for="i in 8" :key="i" class="photo"></div>
         </div>
     </div>
     <div v-else>Cannot find gallery</div>
 </template>
 
 <style lang="scss" scoped>
-.item {
+.metadata-item {
+    @apply flex justify-center items-center space-x-1;
+}
+
+.photo {
     @apply flex-1 min-w-[44%] sm:min-w-[28%] md:min-w-[23%] max-w-[340px];
 }
 </style>

@@ -6,16 +6,21 @@ const query = groq`
     "id": _id,
     name,
     description,
-    releaseDate,
-    _createdAt,
-    _updatedAt,
+    photographDate,
+    publishDate,
     "slug": slug.current,
     "coverImage": images[0]{
         ...,
         asset->
     },
     "imageCount": count(images)
-} | order(releaseDate desc, _updatedAt desc)`
+} | order(
+    select(
+        photographDate != null => photographDate,
+        publishDate != null => publishDate,
+    )
+    desc
+)`
 
 export interface GalleryListItem {
     id: string
@@ -25,10 +30,11 @@ export interface GalleryListItem {
     _createdAt: string
     coverImage: ResolvedSanityImage
     imageCount: number
+    photographDate: `${number}-${number}-${number}`
 }
 
 export default defineCachedEventHandler(async () => {
     return await useSanity().fetch<GalleryListItem[]>(query)
 }, {
-    staleMaxAge: 60 * 60,
+    // staleMaxAge: 60 * 60,
 })

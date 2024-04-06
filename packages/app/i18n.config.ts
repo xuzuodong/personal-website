@@ -9,4 +9,21 @@ export default defineI18nConfig(() => ({
         'zh-TW': ['zh-CN', 'en'],
         'zh-CN': ['zh-TW', 'en'],
     },
+    datetimeFormats: {
+        'en': {
+            short: {
+                year: 'numeric', month: 'short', day: 'numeric',
+            },
+        },
+        'zh-TW': {
+            short: {
+                year: 'numeric', month: 'short', day: 'numeric',
+            },
+        },
+        'zh-CN': {
+            short: {
+                year: 'numeric', month: 'short', day: 'numeric',
+            },
+        },
+    },
 }))
