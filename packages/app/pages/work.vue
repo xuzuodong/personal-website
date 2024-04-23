@@ -4,7 +4,7 @@ import type { Project } from '~/server/api/projects.get'
 const { t } = useI18n()
 
 useHead({
-    title: t('app.projects'),
+    title: t('app.work'),
 })
 
 const { data } = await useFetch<Project[]>('/api/projects')
