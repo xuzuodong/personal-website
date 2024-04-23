@@ -93,8 +93,9 @@ export default defineNuxtConfig({
 
     googleFonts: {
         families: {
-            'Playfair Display': 700,
-            'BenchNine': 700,
+            'Playfair Display': [600],
+            'Noto Serif SC': [600],
+            'BenchNine': [300],
         },
         display: 'block',
     },

@@ -76,7 +76,13 @@ onUnmounted(() => {
 
         <p class="container pb-4">{{ $sanityI18n(data.description) }}</p>
 
-        <div id="photoswipe" class="container mt-6 pb-12 flex flex-wrap justify-center gap-2">
+        <div
+            id="photoswipe"
+            class="
+                container mt-6 pb-12 gap-2
+                grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5
+            "
+        >
             <figure v-for="item in data.images" :key="item.asset._id" class="photo relative block">
                 <a
                     :href="img(item.asset._id, {}, { provider: 'mySanity' })"
@@ -100,7 +106,6 @@ onUnmounted(() => {
                     </div>
                 </a>
             </figure>
-            <div v-for="i in 8" :key="i" class="photo"></div>
         </div>
     </div>
     <div v-else>Cannot find gallery</div>
@@ -109,9 +114,5 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 .metadata-item {
     @apply flex justify-center items-center space-x-1;
-}
-
-.photo {
-    @apply flex-1 min-w-[44%] sm:min-w-[28%] md:min-w-[23%] max-w-[340px];
 }
 </style>

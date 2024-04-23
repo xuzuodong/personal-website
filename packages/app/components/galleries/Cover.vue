@@ -23,9 +23,9 @@ const localePath = useLocalePath()
                     class="bg-cover h-full w-full"
                 />
             </div>
-            <div class="z-[2] absolute bottom-0 w-full px-6 py-5 font-serif text-center text-xl font-bold">
-                <h3 class="mb-2.5 text-white font-[Playfair_Display]">{{ $sanityI18n(item.name) }}</h3>
-                <p class="mb-2.5 text-gray-300 text-sm font-[BenchNine]">- {{ item.imageCount }} PHOTOS -</p>
+            <div class="z-[2] absolute bottom-0 w-full px-6 py-5 text-center text-xl">
+                <h3 class="mb-2.5 text-white font-['Playfair_Display',_'Noto_Serif_SC']">{{ $sanityI18n(item.name) }}</h3>
+                <p class="text-[#a1a1a1] text-sm font-['BenchNine'] tracking-widest">- {{ item.imageCount }} PHOTOS -</p>
             </div>
         </div>
     </nuxt-link>
@@ -77,7 +77,7 @@ const localePath = useLocalePath()
             bottom: -1px;
             left: 0;
             transition: height .3s;
-            background: linear-gradient(0deg,#151515,hsla(0,0%,8%,0));
+            background: linear-gradient(0deg,hsl(224,71.4%,4.1%),hsla(0,0%,8%,0));
         }
     }
 

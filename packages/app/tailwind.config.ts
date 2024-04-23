@@ -16,7 +16,7 @@ export default <Partial<Config>>{
                 'sm': '2rem',
                 'lg': '3rem',
                 'xl': '5rem',
-                '2xl': '6rem',
+                '2xl': '12rem',
             },
         },
     },

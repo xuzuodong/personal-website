@@ -12,19 +12,12 @@ const { data } = await useFetch<GalleryListItem[]>('/api/galleries')
 
 <template>
     <div>
-        <app-section :title="$t('photography.galleries') " class="px-4 max-w-[1200px] mx-auto">
-            <div class="mt-8 flex flex-wrap justify-center lg:justify-normal gap-x-4 gap-y-6">
+        <app-section :title="$t('photography.galleries') " class="px-4 lg:px-24 2xl:px-0 max-w-[1200px] mx-auto">
+            <div class="mt-8 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-6">
                 <div v-for="item in data" :key="item.id" class="cover aspect-square">
                     <galleries-cover :item="item" />
                 </div>
-                <div v-for="i in 8" :key="i" class="cover"></div>
             </div>
         </app-section>
     </div>
 </template>
-
-<style lang="scss" scoped>
-.cover {
-    @apply flex-1 min-w-full xs:min-w-[250px] sm:min-w-[270px] xs:max-w-[330px];
-}
-</style>
