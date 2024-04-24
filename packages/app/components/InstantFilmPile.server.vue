@@ -8,6 +8,6 @@ const props = defineProps<{
 
 <template>
     <div v-for="card in instantFilms" :key="card.image.asset._id" class="hidden">
-        <nuxt-img provider="mySanity" :src="card.image.asset._id" preload :width="720" :height="720" />
+        <nuxt-img provider="mySanity" :src="card.image.asset._id" preload :width="1440" :height="1440" />
     </div>
 </template>
