@@ -30,12 +30,11 @@ function toggleThemeWithViewTransition(event: MouseEvent) {
         Math.max(y, innerHeight - y),
     )
 
-    // @ts-expect-error startViewTransition
     const transition = document.startViewTransition?.(() => {
         toggleTheme()
     })
 
-    transition.ready.then(() => {
+    transition?.ready.then(() => {
         const clipPath = [
                 `circle(0px at ${x}px ${y}px)`,
                 `circle(${endRadius}px at ${x}px ${y}px)`,
@@ -56,7 +55,6 @@ function toggleThemeWithViewTransition(event: MouseEvent) {
 }
 
 function handleSwitchTheme(e: MouseEvent) {
-    // @ts-expect-error: View Transition api not ready with ts
     if (!document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches === true) {
         toggleTheme()
         return
