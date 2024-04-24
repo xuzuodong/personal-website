@@ -25,6 +25,4 @@ export default defineNuxtConfig({
             { from: 'tailwind-variants', name: 'VariantProps', type: true },
         ],
     },
-
-    devtools: { enabled: true },
 })

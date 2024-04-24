@@ -77,7 +77,6 @@ export default defineNuxtConfig({
         tsConfig: {
             compilerOptions: {
                 moduleResolution: 'node',
-                verbatimModuleSyntax: false,
             },
         },
     },
