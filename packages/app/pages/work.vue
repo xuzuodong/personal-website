@@ -13,15 +13,25 @@ const { data } = await useFetch<Project[]>('/api/projects')
 <template>
     <app-section :title="$t('work.projects') " class="container mx-auto">
         <div class="divide-y divide-dashed">
-            <div v-for="item in data" :key="item.id" class="flex space-x-4 p-4">
-                <sanity-image :asset-id="item.coverImage.asset._id" w="250" h="180" fit="crop" class="rounded-lg" />
+            <div v-for="item in data" :key="item.id" class="flex flex-col md:flex-row space-x-4 p-4">
+                <div class="mb-6 md:mb-0 w-4/5 md:w-[200px] xl:w-[240px] self-center md:self-auto">
+                    <ui-aspect-ratio :ratio="16 / 10">
+                        <nuxt-img
+                            provider="mySanity"
+                            :src="item.coverImage.asset._id"
+                            fit="cover" height="330px" densities="x1 x2"
+                            :placeholder="item.coverImage.asset.metadata.lqip!"
+                            class="bg-cover h-full w-full rounded object-cover"
+                        />
+                    </ui-aspect-ratio>
+                </div>
 
                 <div class="flex-1 flex flex-col">
-                    <h2 class="text-[1.1rem] font-medium mb-2">
+                    <h2 class="text-[1.1rem] xl:text-xl font-medium mb-2">
                         {{ $sanityI18n(item.name) }}
                     </h2>
 
-                    <p class="text-[0.9rem] text-muted-foreground leading-snug">
+                    <p class="text-[0.9rem] xl:text-base text-muted-foreground leading-snug">
                         {{ $sanityI18n(item.description) }}
                     </p>
 
