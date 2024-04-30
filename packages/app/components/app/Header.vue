@@ -26,7 +26,7 @@ watch(() => colorMode.value, (value) => {
 
 <template>
     <header
-        class="dark:border-b shadow-lg dark:shadow-none h-[60px]"
+        class="dark:border-b shadow-lg dark:shadow-none h-[var(--header-height)]"
     >
         <div class="hidden md:flex h-full container justify-between items-center">
             <nuxt-link :to="localePath('/')">

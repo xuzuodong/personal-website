@@ -94,8 +94,8 @@ whenever(() => goneCards.size === props.instantFilms.length, async () => {
                 provider="mySanity" :src="card.image.asset._id" :width="720" :height="720"
                 :class="[
                     card.orientation === 'landscape'
-                        ? 'w-[224px] h-[168px] md:w-[256px] md:h-[192px] 2xl:w-[320px] 2xl:h-[240px]'
-                        : 'w-[168px] h-[224px] md:w-[192px] md:h-[256px] 2xl:w-[240px] 2xl:h-[320px]',
+                        ? 'w-[224px] h-[168px] lg:w-[256px] lg:h-[192px]'
+                        : 'w-[168px] h-[224px] lg:w-[192px] lg:h-[256px]',
                 ]"
                 class="object-cover pointer-events-none touch-none select-none"
             />
