@@ -24,7 +24,7 @@
     "@nuxtjs/color-mode": "^3.4.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/i18n": "^8.3.1",
-    "@nuxtjs/sanity": "~1.8.3",
+    "@nuxtjs/sanity": "~1.11.3",
     "@nuxtjs/tailwindcss": "latest",
     "@personal-website/studio": "workspace:*",
     "@personal-website/ui": "workspace:*",
