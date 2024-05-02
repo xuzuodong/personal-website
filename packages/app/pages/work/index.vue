@@ -35,8 +35,8 @@ const { data } = await useFetch<Project[]>('/api/projects')
                         {{ $sanityI18n(item.description) }}
                     </p>
 
-                    <div class="mt-4">
-                        <span v-for="tag in item.tags" :key="tag">
+                    <div class="mt-4 flex flex-wrap">
+                        <span v-for="tag in item.tags" :key="tag" class="shrink-0 mr-2 mb-3">
                             <span class="py-1.5 px-2 bg-muted rounded-md text-[13px] font-semibold font-sans">
                                 {{ tag }}
                             </span>
@@ -45,12 +45,11 @@ const { data } = await useFetch<Project[]>('/api/projects')
                     </div>
 
                     <div class="flex-1"></div>
-                    <div class="flex space-x-2">
-                        <div class="flex-1"></div>
+                    <div class="flex space-x-2 pt-4 justify-center sm:justify-end">
                         <ui-button v-if="item.url" variant="secondary">
                             <a :href="item.url" target="_blank">Visit<icon name="iconamoon:link-external-light" class="ml-1" /></a>
                         </ui-button>
-                        <!-- <ui-button variant="default">Learn More</ui-button> -->
+                        <ui-button variant="default">Learn More</ui-button>
                     </div>
                 </div>
             </div>
