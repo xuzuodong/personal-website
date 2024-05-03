@@ -28,7 +28,7 @@ const instantFilms = computed(() => data.value?.map(image => ({
                 </div>
 
                 <div class="h-3/5 flex flex-col justify-center space-y-6 lg:space-y-10">
-                    <h1 class="whitespace-pre">{{ $t('home.headline') }}</h1>
+                    <h1 class="headline">{{ $t('home.headline') }}</h1>
 
                     <p class="text-muted-foreground xs:text-sm sm:text-base text-center lg:text-left lg:text-lg xl:text-xl lg:leading-snug">
                         {{ $t('home.subhead') }}
@@ -46,3 +46,10 @@ const instantFilms = computed(() => data.value?.map(image => ({
         </div>
     </div>
 </template>
+
+<style scoped>
+.headline {
+    @apply text-center lg:text-left font-semibold whitespace-pre
+        text-2xl sm:text-[2rem] md:text-[2.25rem] xl:text-[2.5rem] 2xl:text-[2.75rem] lg:leading-tight xl:leading-[1.3] 2xl:leading-[1.2];
+}
+</style>

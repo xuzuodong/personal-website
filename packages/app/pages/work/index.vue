@@ -49,7 +49,9 @@ const { data } = await useFetch<Project[]>('/api/projects')
                         <ui-button v-if="item.url" variant="secondary">
                             <a :href="item.url" target="_blank">Visit<icon name="iconamoon:link-external-light" class="ml-1" /></a>
                         </ui-button>
-                        <ui-button variant="default">Learn More</ui-button>
+                        <ui-button variant="default">
+                            <nuxt-link :to="`/work/${item.slug}`">Learn More</nuxt-link>
+                        </ui-button>
                     </div>
                 </div>
             </div>
