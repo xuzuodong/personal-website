@@ -6,7 +6,7 @@ const props = defineProps<{
 
 <template>
     <div class="flex flex-nowrap items-center space-x-4 mb-4">
-        <galleries-photo-caption-logo :lens-make="exif.LensMake" />
+        <photography-photo-caption-logo :lens-make="exif.LensMake" />
         <div>
             <p class="font-semibold font-gray-200">{{ exif.LensModel }}</p>
             <div class="text-gray-400 text-sm">

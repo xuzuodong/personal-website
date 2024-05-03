@@ -100,7 +100,7 @@ onUnmounted(() => {
                         :style="{ backgroundImage: `url(${item.asset.metadata.lqip!})` }"
                     />
                     <div v-if="item.asset.metadata.exif" class="pswp-caption-content">
-                        <galleries-photo-caption :exif="item.asset.metadata.exif" />
+                        <photography-photo-caption :exif="item.asset.metadata.exif" />
                     </div>
                 </a>
             </figure>
