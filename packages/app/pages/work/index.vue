@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Project } from '~/server/api/projects.get'
+import type { Project } from '~/server/api/projects/index.get'
 
 const { t } = useI18n()
 
@@ -18,7 +18,7 @@ const { data } = await useFetch<Project[]>('/api/projects')
                     <ui-aspect-ratio :ratio="16 / 10">
                         <my-sanity-image
                             :src="item.coverImage.asset._id"
-                            fit="cover" height="330px" densities="x1 x2"
+                            fit="cover" height="330px"
                             :placeholder="item.coverImage.asset.metadata.lqip!"
                             class="bg-cover h-full w-full rounded object-cover"
                         />
@@ -41,10 +41,13 @@ const { data } = await useFetch<Project[]>('/api/projects')
                     <div class="flex-1"></div>
                     <div class="flex space-x-2 pt-4 justify-center sm:justify-end">
                         <ui-button v-if="item.url" variant="secondary">
-                            <a :href="item.url" target="_blank">Visit<icon name="iconamoon:link-external-light" class="ml-1" /></a>
+                            <a :href="item.url" target="_blank">{{ $t('work.visit') }}<icon name="iconamoon:link-external-light" class="ml-1" /></a>
+                        </ui-button>
+                        <ui-button v-if="item.sourceCodeUrl" variant="secondary">
+                            <a :href="item.sourceCodeUrl" target="_blank">{{ $t('work.source-code') }}<icon name="iconamoon:link-external-light" class="ml-1" /></a>
                         </ui-button>
                         <ui-button variant="default">
-                            <nuxt-link :to="`/work/${item.slug}`">Learn More</nuxt-link>
+                            <nuxt-link :to="`/work/${item.slug}`">{{ $t('work.learn-more') }}</nuxt-link>
                         </ui-button>
                     </div>
                 </div>

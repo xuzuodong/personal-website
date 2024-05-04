@@ -94,7 +94,7 @@ onUnmounted(() => {
                         :src="img(
                             item.asset._id,
                             { height: 1024, width: 1024 },
-                            { provider: 'mySanity', densities: 'x1 x2' },
+                            { provider: 'mySanity' },
                         )"
                         class="bg-cover w-full h-full object-cover absolute top-0 left-0"
                         :style="{ backgroundImage: `url(${item.asset.metadata.lqip!})` }"

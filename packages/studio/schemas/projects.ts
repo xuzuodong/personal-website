@@ -30,6 +30,12 @@ export default defineType({
         }),
 
         defineField({
+            name: 'sourceCodeUrl',
+            type: 'url',
+            title: 'Source code URL',
+        }),
+
+        defineField({
             name: 'description',
             type: 'internationalizedArrayText',
             title: 'Description',
@@ -49,13 +55,6 @@ export default defineType({
             options: {
                 hotspot: true,
             },
-        }),
-
-        defineField({
-            name: 'previewImages',
-            type: 'array',
-            title: 'Preview images / videos',
-            of: [{ type: 'image' }, { type: 'file' }],
         }),
 
         defineField({

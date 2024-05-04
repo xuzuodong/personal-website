@@ -9,6 +9,7 @@ const query = groq`
     "slug": slug.current,
     tags,
     url,
+    sourceCodeUrl,
     coverImage{
       asset->
     }
@@ -20,6 +21,7 @@ export interface Project {
     description: Value[]
     slug: string
     url: string
+    sourceCodeUrl?: string
     tags: string[]
     coverImage: ResolvedSanityImage
 }
