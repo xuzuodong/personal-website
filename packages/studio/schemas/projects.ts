@@ -57,6 +57,12 @@ export default defineType({
             title: 'Preview images / videos',
             of: [{ type: 'image' }, { type: 'file' }],
         }),
+
+        defineField({
+            name: 'content',
+            type: 'internationalizedArrayFormattedText',
+            title: 'Content',
+        }),
     ],
     preview: {
         select: {

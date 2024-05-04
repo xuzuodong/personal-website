@@ -1,5 +1,6 @@
 import type { ResolvedSanityImage } from '@sanity/asset-utils'
 import type { Value } from 'sanity-plugin-internationalized-array'
+import type { PortableTextBlock } from '@portabletext/types'
 
 export interface ProjectDetail {
     _id: string
@@ -9,6 +10,7 @@ export interface ProjectDetail {
     tags: string[]
     previewImages: ResolvedSanityImage[]
     coverImage: ResolvedSanityImage
+    content: { value?: PortableTextBlock }[]
 }
 
 export default defineEventHandler(async (event) => {
@@ -22,6 +24,16 @@ export default defineEventHandler(async (event) => {
         coverImage{
             ...,
             asset->
+        },
+        content[]{
+            ...,
+            value[]{
+              ...,
+              _type == "image" => {
+                ...,
+                asset->
+              }
+            }
         }
     }`
     return await useSanity().fetch(query)

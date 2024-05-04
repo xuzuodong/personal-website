@@ -1,4 +1,5 @@
 import type { PickupFallbackLocales, UnionToTuple } from '@intlify/core'
+import type { PortableTextBlock } from '@portabletext/types'
 import type { Value } from 'sanity-plugin-internationalized-array'
 
 export default defineNuxtPlugin({
@@ -13,20 +14,25 @@ export default defineNuxtPlugin({
 
         const fallbackLocale = $i18n.fallbackLocale.value as { [locale in string]?: Array<PickupFallbackLocales<UnionToTuple<string>>> }
 
+        function sanityI18n(values?: Value[]): string | undefined
+        function sanityI18n(values?: { value?: PortableTextBlock }[]): PortableTextBlock[]
+
+        function sanityI18n(values?: any[]) {
+            if (!values) return
+            const locale = $i18n.locale.value
+            const locales = [locale]
+            if (Array.isArray(fallbackLocale[locale])) {
+                locales.push(...fallbackLocale[locale]!)
+            }
+            for (const l of locales) {
+                const fallbackTranslated = values[map[l]]
+                if (fallbackTranslated) return fallbackTranslated.value
+            }
+        }
+
         return {
             provide: {
-                sanityI18n: (values?: Value[]) => {
-                    if (!values) return
-                    const locale = $i18n.locale.value
-                    const locales = [locale]
-                    if (Array.isArray(fallbackLocale[locale])) {
-                        locales.push(...fallbackLocale[locale]!)
-                    }
-                    for (const l of locales) {
-                        const fallbackTranslated = values[map[l]]
-                        if (fallbackTranslated) return fallbackTranslated.value
-                    }
-                },
+                sanityI18n,
             },
         }
     },
