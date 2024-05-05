@@ -15,10 +15,9 @@ const localePath = useLocalePath()
             class="cover relative h-full"
         >
             <div class="image-wrapper h-full">
-                <nuxt-img
-                    provider="mySanity"
+                <my-sanity-image
                     :src="item.coverImage.asset._id"
-                    fit="cover" width="330px" height="330px" densities="x1 x2"
+                    fit="cover" width="330px" height="330px"
                     :placeholder="item.coverImage.asset.metadata.lqip!"
                     class="bg-cover h-full w-full"
                 />

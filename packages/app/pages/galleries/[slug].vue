@@ -56,9 +56,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div v-if="data" class="mt-12 px-2">
-        <h3 class="pb-2 px-2 text-center text-2xl font-bold">{{ $sanityI18n(data.name) }}</h3>
-
+    <app-section v-if="data" variant="chapter" :title="$sanityI18n(data.name)">
         <div class="pb-6 text-center text-sm text-muted-foreground flex justify-center space-x-2">
             <p class="metadata-item">
                 <icon name="solar:album-linear" />
@@ -96,18 +94,18 @@ onUnmounted(() => {
                         :src="img(
                             item.asset._id,
                             { height: 1024, width: 1024 },
-                            { provider: 'mySanity', densities: 'x1 x2' },
+                            { provider: 'mySanity' },
                         )"
                         class="bg-cover w-full h-full object-cover absolute top-0 left-0"
                         :style="{ backgroundImage: `url(${item.asset.metadata.lqip!})` }"
                     />
                     <div v-if="item.asset.metadata.exif" class="pswp-caption-content">
-                        <galleries-photo-caption :exif="item.asset.metadata.exif" />
+                        <photography-photo-caption :exif="item.asset.metadata.exif" />
                     </div>
                 </a>
             </figure>
         </div>
-    </div>
+    </app-section>
     <div v-else>Cannot find gallery</div>
 </template>
 

@@ -1,5 +1,5 @@
 import { visionTool } from '@sanity/vision'
-import { defineConfig } from 'sanity'
+import { defineConfig, defineField } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { media } from 'sanity-plugin-media'
@@ -32,7 +32,16 @@ const config = defineConfig({
                 { id: 'zh-TW', title: '繁體中文' },
             ],
             defaultLanguages: ['en'],
-            fieldTypes: ['string', 'text'],
+            fieldTypes: [
+                'string',
+                'text',
+                // Internationalized array of blocks
+                defineField({
+                    name: 'formattedText',
+                    type: 'array',
+                    of: [{ type: 'block' }, { type: 'image' }],
+                }),
+            ],
         }),
     ],
 

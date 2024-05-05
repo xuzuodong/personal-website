@@ -1,2 +1,6 @@
 work:
   projects: Projects
+  titleAffix: '''s Project'
+  visit: Visit
+  learn-more: Learn More
+  source-code: Source Code

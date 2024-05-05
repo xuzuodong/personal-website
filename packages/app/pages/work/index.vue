@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Project } from '~/server/api/projects.get'
+import type { Project } from '~/server/api/projects/index.get'
 
 const { t } = useI18n()
 
@@ -16,10 +16,9 @@ const { data } = await useFetch<Project[]>('/api/projects')
             <div v-for="item in data" :key="item.id" class="flex flex-col md:flex-row space-x-4 p-4">
                 <div class="mb-6 md:mb-0 w-4/5 md:w-[200px] xl:w-[240px] self-center md:self-auto">
                     <ui-aspect-ratio :ratio="16 / 10">
-                        <nuxt-img
-                            provider="mySanity"
+                        <my-sanity-image
                             :src="item.coverImage.asset._id"
-                            fit="cover" height="330px" densities="x1 x2"
+                            fit="cover" height="330px"
                             :placeholder="item.coverImage.asset.metadata.lqip!"
                             class="bg-cover h-full w-full rounded object-cover"
                         />
@@ -35,22 +34,21 @@ const { data } = await useFetch<Project[]>('/api/projects')
                         {{ $sanityI18n(item.description) }}
                     </p>
 
-                    <div class="mt-4">
-                        <span v-for="tag in item.tags" :key="tag">
-                            <span class="py-1.5 px-2 bg-muted rounded-md text-[13px] font-semibold font-sans">
-                                {{ tag }}
-                            </span>
-                            &ZeroWidthSpace;
-                        </span>
+                    <div class="mt-4 flex flex-wrap">
+                        <work-tag v-for="tag in item.tags" :key="tag" :tag />
                     </div>
 
                     <div class="flex-1"></div>
-                    <div class="flex space-x-2">
-                        <div class="flex-1"></div>
+                    <div class="flex space-x-2 pt-4 justify-center sm:justify-end">
                         <ui-button v-if="item.url" variant="secondary">
-                            <a :href="item.url" target="_blank">Visit<icon name="iconamoon:link-external-light" class="ml-1" /></a>
+                            <a :href="item.url" target="_blank">{{ $t('work.visit') }}<icon name="iconamoon:link-external-light" class="ml-1" /></a>
                         </ui-button>
-                        <!-- <ui-button variant="default">Learn More</ui-button> -->
+                        <ui-button v-if="item.sourceCodeUrl" variant="secondary">
+                            <a :href="item.sourceCodeUrl" target="_blank">{{ $t('work.source-code') }}<icon name="iconamoon:link-external-light" class="ml-1" /></a>
+                        </ui-button>
+                        <ui-button variant="default">
+                            <nuxt-link :to="`/work/${item.slug}`">{{ $t('work.learn-more') }}</nuxt-link>
+                        </ui-button>
                     </div>
                 </div>
             </div>
