@@ -8,6 +8,8 @@ useHead({
 })
 
 const { data } = await useFetch<Project[]>('/api/projects')
+
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -47,7 +49,7 @@ const { data } = await useFetch<Project[]>('/api/projects')
                             <a :href="item.sourceCodeUrl" target="_blank">{{ $t('work.source-code') }}<icon name="iconamoon:link-external-light" class="ml-1" /></a>
                         </ui-button>
                         <ui-button variant="default">
-                            <nuxt-link :to="`/work/${item.slug}`">{{ $t('work.learn-more') }}</nuxt-link>
+                            <nuxt-link :to="localePath(`/work/${item.slug}`)">{{ $t('work.learn-more') }}</nuxt-link>
                         </ui-button>
                     </div>
                 </div>
