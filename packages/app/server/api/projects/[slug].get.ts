@@ -7,6 +7,7 @@ export interface ProjectDetail {
     name: Value[]
     description: Value[]
     url: string
+    sourceCodeUrl: string
     tags: string[]
     previewImages: ResolvedSanityImage[]
     coverImage: ResolvedSanityImage

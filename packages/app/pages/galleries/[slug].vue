@@ -56,7 +56,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <app-section v-if="data" variant="chapter" :title="$sanityI18n(data.name)">
+    <app-layout v-if="data" level="2" :title="$sanityI18n(data.name)">
         <div class="pb-6 text-center text-sm text-muted-foreground flex justify-center space-x-2">
             <p class="metadata-item">
                 <icon name="solar:album-linear" />
@@ -105,7 +105,7 @@ onUnmounted(() => {
                 </a>
             </figure>
         </div>
-    </app-section>
+    </app-layout>
     <div v-else>Cannot find gallery</div>
 </template>
 

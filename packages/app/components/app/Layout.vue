@@ -5,41 +5,41 @@ export default defineComponent({
             type: String,
         },
 
-        variant: {
-            type: String as PropType<'global' | 'chapter'>,
-            default: 'global',
+        level: {
+            type: String as PropType<'1' | '2'>,
+            default: '1',
         },
     },
 
     setup(props, { slots }) {
         const contailerClass = {
-            global: 'mt-16',
-            chapter: 'mt-12',
+            1: 'mt-16 mb-8',
+            2: 'mt-12',
         }
 
         const titleClass = {
-            global: [
+            1: [
                 'mb-4 lg:mb-12 font-mono font-bold',
                 'text-2xl lg:text-4xl',
                 'bg-clip-text text-transparent inline-block bg-gradient-to-r from-foreground to-muted-foreground',
             ],
-            chapter: 'pb-2 px-2 text-center text-2xl font-bold',
+            2: 'pb-2 px-2 text-center text-2xl font-bold',
         }
 
         const Title = {
-            global: () => (
+            1: () => (
                 <div class="text-center">
-                    <h1 class={titleClass.global}>{props.title}</h1>
+                    <h1 class={titleClass['1']}>{props.title}</h1>
                 </div>
             ),
-            chapter: () => (
-                <h2 class={titleClass.chapter}>{props.title}</h2>
+            2: () => (
+                <h2 class={titleClass['2']}>{props.title}</h2>
             ),
         }
 
         return () => (
-            <div class={contailerClass[props.variant]}>
-                {Title[props.variant]()}
+            <div class={contailerClass[props.level]}>
+                {Title[props.level]()}
                 {slots.default?.()}
             </div>
         )

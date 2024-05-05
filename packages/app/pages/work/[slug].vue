@@ -3,8 +3,6 @@ import { PortableText } from '@portabletext/vue'
 
 import WorkContentImg from '~/components/work/ContentImg.vue'
 
-import type { PortableTextComponentProps, PortableTextVueComponents } from '@portabletext/vue'
-import type { ResolvedSanityImage } from '@sanity/asset-utils'
 import type { ProjectDetail } from '~/server/api/projects/[slug].get'
 
 const route = useRoute()
@@ -19,40 +17,19 @@ useHead({
         ? `${title} - ${t('app.title')}${t('work.titleAffix')}`
         : `${t('app.title')}${t('work.titleAffix')}`,
 })
-
-const myPortableTextComponents: Partial<PortableTextVueComponents> = {
-    types: {
-        image: ({ value }: PortableTextComponentProps<ResolvedSanityImage>) => h(
-            WorkContentImg,
-            {
-                img: value,
-            },
-        ),
-    },
-}
 </script>
 
 <template>
-    <app-section v-if="data" variant="chapter" :title="$sanityI18n(data.name)">
-        <div class="container px-4 lg:px-10 pt-3">
+    <app-layout v-if="data" level="2" :title="$sanityI18n(data.name)">
+        <div class="max-w-[720px] xl:max-w-[840px] 2xl:max-w-[1024px] mx-auto px-4 lg:px-10 pt-3">
             <div class="pb-5 flex flex-wrap justify-center">
                 <work-tag v-for="tag in data.tags" :key="tag" :tag />
             </div>
 
-            <div class="flex mb-8">
-                <div class="w-1 shrink-0 bg-muted-foreground"></div>
-                <p class="flex-1 px-6 py-4 bg-muted text-muted-foreground">
-                    {{ $sanityI18n(data.description) }}
-                </p>
-            </div>
+            <work-content-img :img="data.coverImage" :url="data.url" :source-code-url="data.sourceCodeUrl" class="mb-8" />
 
-            <work-content-img :img="data.coverImage" />
-
-            <portable-text
-                :value="$sanityI18n(data.content)"
-                :components="myPortableTextComponents"
-            />
+            <portable-text :value="$sanityI18n(data.content)" :components="myPortableTextComponents" />
         </div>
-    </app-section>
+    </app-layout>
     <div v-else>Cannot find project</div>
 </template>

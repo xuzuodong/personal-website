@@ -8,8 +8,8 @@ useHead({
 
 <template>
     <div class="container">
-        <app-section :title="$t('app.about')">
+        <app-layout :title="$t('app.about')">
             <p>{{ $t('about.desc') }}</p>
-        </app-section>
+        </app-layout>
     </div>
 </template>
