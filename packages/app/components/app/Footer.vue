@@ -1,7 +1,11 @@
+<script setup lang="ts">
+const localePath = useLocalePath()
+</script>
+
 <template>
     <footer
         class="h-[var(--footer-height)] flex items-center text-center border-t"
-        :class="$route.path !== '/' && 'mt-8'"
+        :class="$route.path !== localePath('/') && 'mt-8'"
     >
         <div class="container flex justify-between items-center flex-wrap">
             <div class="flex flex-col space-y-2">
