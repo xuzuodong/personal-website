@@ -9,6 +9,8 @@
   "main": "package.json",
   "scripts": {
     "dev": "env-cmd -f ../../.env sanity dev",
+    "extract": "env-cmd -f ../../.env sanity schema extract --path ../app/types/sanity/schemas.json",
+    "typegen": "sanity typegen generate",
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
@@ -26,5 +28,8 @@
     "sanity-plugin-internationalized-array": "^2.0.0",
     "sanity-plugin-media": "^2.2.5",
     "styled-components": "^6.1.8"
+  },
+  "devDependencies": {
+    "sanity-plugin-singleton-tools": "^1.0.1"
   }
 }

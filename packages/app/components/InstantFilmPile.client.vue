@@ -3,11 +3,11 @@ import { useMotions } from '@vueuse/motion'
 import { promiseTimeout } from '@vueuse/core'
 
 import type { Handler } from '@vueuse/gesture'
-import type { ResolvedSanityImage } from '@sanity/asset-utils'
 import type { Variant } from '@vueuse/motion'
+import type { InstantFilmsQueryResult } from '~/types/sanity'
 
 const props = defineProps<{
-    instantFilms: { image: ResolvedSanityImage, orientation: 'portrait' | 'landscape' }[]
+    instantFilms: { image: NonNullable<InstantFilmsQueryResult>[number], orientation: 'portrait' | 'landscape' }[]
 }>()
 
 const motions = useMotions()
@@ -82,7 +82,7 @@ whenever(() => goneCards.size === props.instantFilms.length, async () => {
 </script>
 
 <template>
-    <div v-for="(card, i) in instantFilms" :key="card.image.asset._id" class="film-container">
+    <div v-for="(card, i) in instantFilms" :key="card.image.asset!._id" class="film-container">
         <instant-film-frame
             v-motion="`motion-${i}`"
             v-drag="handleDrag(i)"
@@ -91,7 +91,7 @@ whenever(() => goneCards.size === props.instantFilms.length, async () => {
             :class="goneCards.size === instantFilms.length - i - 1 ? 'pointer-events-auto' : 'pointer-events-none'"
         >
             <my-sanity-image
-                :src="card.image.asset._id" :width="720" :height="720"
+                :src="card.image.asset!._id" :width="720" :height="720"
                 :class="[
                     card.orientation === 'landscape'
                         ? 'w-[224px] h-[168px] lg:w-[256px] lg:h-[192px]'

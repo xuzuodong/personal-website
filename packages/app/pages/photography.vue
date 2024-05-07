@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { GalleryListItem } from '~/server/api/galleries/index.get'
+import type { GalleriesQueryResult } from '~/types/sanity'
 
 const { t } = useI18n()
 
@@ -7,7 +7,7 @@ useHead({
     title: t('app.photography'),
 })
 
-const { data } = await useFetch<GalleryListItem[]>('/api/galleries')
+const { data } = await useFetch<GalleriesQueryResult>('/api/galleries')
 </script>
 
 <template>

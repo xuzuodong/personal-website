@@ -4,11 +4,11 @@ import WorkContentImg from '~/components/work/ContentImg.vue'
 import { Icon } from '#components'
 
 import type { PortableTextComponentProps, PortableTextVueComponents } from '@portabletext/vue'
-import type { ResolvedSanityImage } from '@sanity/asset-utils'
+import type { ProjectQueryResult } from '~/types/sanity'
 
 export const myPortableTextComponents: Partial<PortableTextVueComponents> = {
     types: {
-        image: ({ value }: PortableTextComponentProps<ResolvedSanityImage>) => h(WorkContentImg, { img: value, class: 'mb-6' }),
+        image: ({ value }: PortableTextComponentProps<NonNullable<ProjectQueryResult>['coverImage'] | null>) => h(WorkContentImg, { img: value, class: 'mb-6' }),
     },
     block: {
         h1: (_, { slots }) => h('h1', { class: 'text-2xl font-bold mb-6' }, slots.default?.()),

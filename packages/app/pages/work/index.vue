@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Project } from '~/server/api/projects/index.get'
+import type { ProjectsQueryResult } from '~/types/sanity'
 
 const { t } = useI18n()
 
@@ -7,7 +7,7 @@ useHead({
     title: t('app.work'),
 })
 
-const { data } = await useFetch<Project[]>('/api/projects')
+const { data } = await useFetch<ProjectsQueryResult>('/api/projects')
 
 const localePath = useLocalePath()
 </script>
@@ -19,9 +19,9 @@ const localePath = useLocalePath()
                 <div class="mb-6 md:mb-0 w-4/5 md:w-[200px] xl:w-[240px] self-center md:self-auto">
                     <ui-aspect-ratio :ratio="16 / 10">
                         <my-sanity-image
-                            :src="item.coverImage.asset._id"
+                            :src="item.coverImage?.asset?._id"
                             fit="cover" height="330px"
-                            :placeholder="item.coverImage.asset.metadata.lqip!"
+                            :placeholder="item.coverImage?.asset?.metadata?.lqip"
                             class="bg-cover h-full w-full rounded object-cover"
                         />
                     </ui-aspect-ratio>
