@@ -28,5 +28,8 @@
     "sanity-plugin-internationalized-array": "^2.0.0",
     "sanity-plugin-media": "^2.2.5",
     "styled-components": "^6.1.8"
+  },
+  "devDependencies": {
+    "sanity-plugin-singleton-tools": "^1.0.1"
   }
 }
