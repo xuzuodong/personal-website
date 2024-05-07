@@ -1,8 +1,7 @@
-import type { ResolvedSanityImage } from '@sanity/asset-utils'
-import type { Value } from 'sanity-plugin-internationalized-array'
+import type { GalleriesQueryResult } from '~/types/sanity'
 
-const query = groq`
-*[_type == "galleries"]{
+const galleriesQuery = groq`
+*[_type == "gallery"]{
     "id": _id,
     name,
     description,
@@ -22,19 +21,8 @@ const query = groq`
     desc
 )`
 
-export interface GalleryListItem {
-    id: string
-    name: Value[]
-    description: Value[]
-    slug: string
-    _createdAt: string
-    coverImage: ResolvedSanityImage
-    imageCount: number
-    photographDate: `${number}-${number}-${number}`
-}
-
 export default defineCachedEventHandler(async () => {
-    return await useSanity().fetch<GalleryListItem[]>(query)
+    return await useSanity().fetch<GalleriesQueryResult[]>(galleriesQuery)
 }, {
     // staleMaxAge: 60 * 60,
 })

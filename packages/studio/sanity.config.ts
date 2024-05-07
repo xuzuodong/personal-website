@@ -4,6 +4,7 @@ import { structureTool } from 'sanity/structure'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { media } from 'sanity-plugin-media'
 import { internationalizedArray } from 'sanity-plugin-internationalized-array'
+import { singletonTools } from 'sanity-plugin-singleton-tools'
 
 import { schemaTypes } from './schemas'
 import { structure } from './deskStructure'
@@ -24,6 +25,7 @@ const config = defineConfig({
         structureTool({ structure }),
         unsplashImageAsset(),
         visionTool({ defaultApiVersion: '2023-06-21' }),
+        singletonTools(),
         media(),
         internationalizedArray({
             languages: [
@@ -48,6 +50,7 @@ const config = defineConfig({
     schema: {
         types: schemaTypes,
     },
+
 })
 
 export default config

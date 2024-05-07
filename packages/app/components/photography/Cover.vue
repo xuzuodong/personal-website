@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { GalleryListItem } from '~/server/api/galleries/index.get'
+import type { GalleriesQueryResult } from '~/types/sanity'
 
 const props = defineProps<{
-    item: GalleryListItem
+    item: NonNullable<GalleriesQueryResult>[number]
 }>()
 
 const localePath = useLocalePath()
@@ -16,9 +16,9 @@ const localePath = useLocalePath()
         >
             <div class="image-wrapper h-full">
                 <my-sanity-image
-                    :src="item.coverImage.asset._id"
+                    :src="item.coverImage?.asset?._id"
                     fit="cover" width="330px" height="330px"
-                    :placeholder="item.coverImage.asset.metadata.lqip!"
+                    :placeholder="item.coverImage?.asset?.metadata?.lqip"
                     class="bg-cover h-full w-full"
                 />
             </div>
