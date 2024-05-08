@@ -1,8 +1,8 @@
 import type { ResolvedSanityImage } from '@sanity/asset-utils'
 import type { Value } from 'sanity-plugin-internationalized-array'
 
-const query = groq`
-*[_type == "projects"]{
+const projectsQuery = groq`
+*[_type == "project"]{
     "id": _id,
     name,
     description,
@@ -27,5 +27,5 @@ export interface Project {
 }
 
 export default defineEventHandler(async () => {
-    return await useSanity().fetch<Project[]>(query)
+    return await useSanity().fetch<Project[]>(projectsQuery)
 })

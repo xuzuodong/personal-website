@@ -9,19 +9,14 @@ export interface ProjectDetail {
     url: string
     sourceCodeUrl: string
     tags: string[]
-    previewImages: ResolvedSanityImage[]
     coverImage: ResolvedSanityImage
     content: { value?: PortableTextBlock }[]
 }
 
 export default defineEventHandler(async (event) => {
     const { slug } = getRouterParams(event)
-    const query = groq`*[_type == "projects" && slug.current == "${slug}"][0]{
+    const query = groq`*[_type == "project" && slug.current == $slug][0]{
         ...,
-        previewImages[]{
-            ...,
-            asset->
-        },
         coverImage{
             ...,
             asset->
@@ -37,5 +32,5 @@ export default defineEventHandler(async (event) => {
             }
         }
     }`
-    return await useSanity().fetch(query)
+    return await useSanity().fetch(query, { slug })
 })
