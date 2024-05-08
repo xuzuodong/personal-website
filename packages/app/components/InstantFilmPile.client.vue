@@ -79,6 +79,11 @@ whenever(() => goneCards.size === props.instantFilms.length, async () => {
     draggingInfo = null
     goneCards.clear()
 })
+
+const loadedCount = ref(0)
+whenever(() => loadedCount.value === props.instantFilms.length, () => {
+    Object.values(motions).forEach((motion, i) => motion.apply(enterVariant(i)))
+})
 </script>
 
 <template>
@@ -87,7 +92,6 @@ whenever(() => goneCards.size === props.instantFilms.length, async () => {
             v-motion="`motion-${i}`"
             v-drag="handleDrag(i)"
             :initial="{ scale: 1.5, y: -1000 }"
-            :enter="enterVariant(i)"
             :class="goneCards.size === instantFilms.length - i - 1 ? 'pointer-events-auto' : 'pointer-events-none'"
         >
             <my-sanity-image
@@ -98,6 +102,7 @@ whenever(() => goneCards.size === props.instantFilms.length, async () => {
                         : 'w-[168px] h-[224px] lg:w-[192px] lg:h-[256px]',
                 ]"
                 class="object-cover pointer-events-none touch-none select-none"
+                @load="loadedCount++"
             />
         </instant-film-frame>
     </div>
