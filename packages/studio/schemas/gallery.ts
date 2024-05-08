@@ -1,7 +1,7 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
-    name: 'galleries',
+    name: 'gallery',
     type: 'document',
     title: 'Galleries',
     fields: [

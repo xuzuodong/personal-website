@@ -3,19 +3,19 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "bp": "pnpm --filter app bp",
     "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules .nuxt",
     "dev": "pnpm --filter app dev",
     "dev:studio": "pnpm --filter studio dev",
     "build": "pnpm --filter app build",
     "build:studio": "pnpm --filter studio build",
-    "preview": "pnpm --filter app preview",
-    "bp": "pnpm --filter app bp",
-    "typecheck": "pnpm --filter app typecheck",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "preview": "pnpm --filter app preview",
+    "typecheck": "pnpm --filter app typecheck"
   },
   "devDependencies": {
-    "@sanomics/eslint-config": "latest",
+    "@sanomics/eslint-config": "^1.2.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "env-cmd": "^10.1.0",

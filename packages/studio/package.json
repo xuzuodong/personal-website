@@ -25,6 +25,7 @@
     "sanity-plugin-asset-source-unsplash": "^1.1.2",
     "sanity-plugin-internationalized-array": "^2.0.0",
     "sanity-plugin-media": "^2.2.5",
+    "sanity-plugin-singleton-tools": "^1.0.1",
     "styled-components": "^6.1.8"
   }
 }
