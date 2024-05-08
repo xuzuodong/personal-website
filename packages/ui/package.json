@@ -3,25 +3,20 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "dependencies": {
-    "radix-vue": "^1.7.2",
-    "tailwind-variants": "^0.2.1",
-    "vue": "^3.4.25",
-    "vue-router": "^4.3.2"
+    "dev": "nuxi dev .playground",
+    "build": "nuxt build .playground",
+    "generate": "nuxt generate .playground",
+    "preview": "nuxt preview .playground",
+    "lint": "eslint .",
+    "postinstall": "nuxt prepare .playground"
   },
   "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
-    "@nuxtjs/color-mode": "^3.4.0",
     "@nuxtjs/tailwindcss": "^6.12.0",
-    "@vueuse/nuxt": "^10.9.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.378.0",
     "nuxt": "^3.11.2",
-    "nuxt-icon": "^0.6.10",
-    "tailwindcss-animate": "^1.0.7"
+    "radix-vue": "^1.7.4",
+    "shadcn-nuxt": "^0.10.4"
   }
 }

@@ -7,6 +7,7 @@
     "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules .nuxt",
     "dev": "pnpm --filter app dev",
     "dev:studio": "pnpm --filter studio dev",
+    "dev:ui": "pnpm --filter ui dev",
     "build": "pnpm --filter app build",
     "build:studio": "pnpm --filter studio build",
     "lint": "eslint .",

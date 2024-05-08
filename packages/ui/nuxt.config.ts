@@ -1,28 +1,24 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     modules: [
-        '@nuxtjs/tailwindcss',
         '@nuxtjs/color-mode',
-        '@vueuse/nuxt',
+        '@nuxtjs/tailwindcss',
+        'shadcn-nuxt',
         'nuxt-icon',
     ],
 
-    tailwindcss: {
-        exposeConfig: true,
+    components: {
+        // By default nuxt also auto-imports `.vue`,
+        // but this causes nuxt to warn "Two component files resolving to the same name xxx"
+        dirs: [{ path: '~/components/ui', extensions: ['vue'] }],
     },
 
-    colorMode: {
-        classSuffix: '',
-    },
+    tailwindcss: { exposeConfig: true },
 
-    typescript: {
-        shim: false,
-    },
+    colorMode: { classSuffix: '' },
 
-    imports: {
-        imports: [
-            { from: 'tailwind-variants', name: 'tv' },
-            { from: 'tailwind-variants', name: 'VariantProps', type: true },
-        ],
-    },
+    typescript: { shim: false },
+
+    shadcn: { prefix: 'ui' },
+
+    devtools: { enabled: true },
 })
