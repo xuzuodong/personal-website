@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import type { ResolvedSanityImage } from '@sanity/asset-utils'
 import type { Link } from './ContentImgLayout.vue'
-import type { ProjectQueryResult } from '~/types/sanity'
 
 const props = defineProps<{
-    img: NonNullable<ProjectQueryResult>['coverImage'] | null
+    img: ResolvedSanityImage
     url?: string
     sourceCodeUrl?: string
 }>()
@@ -18,16 +18,16 @@ const link = computed<Link | undefined>(
 </script>
 
 <template>
-    <work-content-img-layout v-if="img" :link>
-        <ui-aspect-ratio :ratio="img.asset?.metadata?.dimensions?.aspectRatio">
+    <work-content-img-layout :link>
+        <ui-aspect-ratio :ratio="img.asset.metadata.dimensions.aspectRatio">
             <my-sanity-image
                 v-bind="$attrs"
-                :src="img.asset?._id"
+                :src="img.asset._id"
                 width="720" quality="95"
                 class="h-full" :class="[
-                    !img.asset?.metadata?.hasAlpha && 'bg-cover drop-shadow-2xl',
+                    !img.asset.metadata.hasAlpha && 'bg-cover drop-shadow-2xl',
                 ]"
-                :style="{ backgroundImage: !img.asset?.metadata?.hasAlpha && `url(${img.asset?.metadata?.lqip!})` }"
+                :style="{ backgroundImage: !img.asset.metadata.hasAlpha && `url(${img.asset.metadata.lqip!})` }"
             />
         </ui-aspect-ratio>
     </work-content-img-layout>

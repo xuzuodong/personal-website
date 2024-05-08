@@ -1,7 +1,6 @@
 import type { PickupFallbackLocales, UnionToTuple } from '@intlify/core'
 import type { PortableTextBlock } from '@portabletext/types'
 import type { Value } from 'sanity-plugin-internationalized-array'
-import type { ProjectQueryResult } from '~/types/sanity'
 
 export default defineNuxtPlugin({
     setup() {
@@ -15,10 +14,10 @@ export default defineNuxtPlugin({
 
         const fallbackLocale = $i18n.fallbackLocale.value as { [locale in string]?: Array<PickupFallbackLocales<UnionToTuple<string>>> }
 
-        function sanityI18n(values?: Value[] | null): string | undefined
-        function sanityI18n(values?: NonNullable<ProjectQueryResult>['content']): PortableTextBlock[]
+        function sanityI18n(values?: Value[]): string | undefined
+        function sanityI18n(values?: { value?: PortableTextBlock }[]): PortableTextBlock[]
 
-        function sanityI18n(values?: any[] | null) {
+        function sanityI18n(values?: any[]) {
             if (!values) return
             const locale = $i18n.locale.value
             const locales = [locale]

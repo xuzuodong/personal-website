@@ -1,15 +1,14 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
-    name: 'instantFilm',
+    name: 'instantFilms',
     type: 'document',
     title: 'Instant Films',
     fields: [
         defineField({
             name: 'instantFilms',
             type: 'array',
-            title: 'All Instant Films',
-            description: 'Only the last 5 images will be displayed on the homepage.',
+            title: 'Instant Films',
             of: [defineArrayMember({
                 name: 'image',
                 title: 'Image',
@@ -25,7 +24,4 @@ export default defineType({
             },
         }),
     ],
-    options: {
-        singleton: true,
-    },
 })

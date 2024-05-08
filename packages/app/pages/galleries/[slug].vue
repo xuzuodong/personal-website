@@ -2,9 +2,9 @@
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
 import 'photoswipe/style.css'
 import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin'
-
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
-import type { GalleryQueryResult } from '~/types/sanity'
+
+import type { Gallery } from '~/server/api/galleries/[slug].get'
 
 definePageMeta({
     scrollToTop: true,
@@ -12,7 +12,7 @@ definePageMeta({
 
 const route = useRoute()
 
-const { data } = await useFetch<GalleryQueryResult>(`/api/galleries/` + `${route.params.slug}`)
+const { data } = await useFetch<Gallery | null>(`/api/galleries/` + `${route.params.slug}`)
 
 const { t } = useI18n()
 const { $sanityI18n } = useNuxtApp()
@@ -60,7 +60,7 @@ onUnmounted(() => {
         <div class="pb-6 text-center text-sm text-muted-foreground flex justify-center space-x-2">
             <p class="metadata-item">
                 <icon name="solar:album-linear" />
-                <span>{{ $t('photography.count', { count: data.images?.length || 0 }) }}</span>
+                <span>{{ $t('photography.count', { count: data.images.length }) }}</span>
             </p>
 
             <template v-if="data.photographDate">
@@ -81,26 +81,26 @@ onUnmounted(() => {
                 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5
             "
         >
-            <figure v-for="item in data.images" :key="item.asset!._id" class="photo relative block">
+            <figure v-for="item in data.images" :key="item.asset._id" class="photo relative block">
                 <a
-                    :href="img(item.asset!._id, {}, { provider: 'mySanity' })"
-                    :data-pswp-width="item.asset?.metadata?.dimensions?.width"
-                    :data-pswp-height="item.asset?.metadata?.dimensions?.height"
+                    :href="img(item.asset._id, {}, { provider: 'mySanity' })"
+                    :data-pswp-width="item.asset.metadata.dimensions.width"
+                    :data-pswp-height="item.asset.metadata.dimensions.height"
                     data-cropped="true"
                     target="_blank"
                     class="block relative w-full h-full pb-[100%] overflow-hidden"
                 >
                     <img
                         :src="img(
-                            item.asset!._id,
+                            item.asset._id,
                             { height: 1024, width: 1024 },
                             { provider: 'mySanity' },
                         )"
                         class="bg-cover w-full h-full object-cover absolute top-0 left-0"
-                        :style="{ backgroundImage: `url(${item.asset?.metadata?.lqip!})` }"
+                        :style="{ backgroundImage: `url(${item.asset.metadata.lqip!})` }"
                     />
-                    <div v-if="(item.asset?.metadata as any).exif" class="pswp-caption-content">
-                        <photography-photo-caption :exif="(item.asset?.metadata as any).exif" />
+                    <div v-if="item.asset.metadata.exif" class="pswp-caption-content">
+                        <photography-photo-caption :exif="item.asset.metadata.exif" />
                     </div>
                 </a>
             </figure>

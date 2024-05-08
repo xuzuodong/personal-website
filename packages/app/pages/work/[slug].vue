@@ -3,10 +3,10 @@ import { PortableText } from '@portabletext/vue'
 
 import WorkContentImg from '~/components/work/ContentImg.vue'
 
-import type { ProjectQueryResult } from '~/types/sanity'
+import type { ProjectDetail } from '~/server/api/projects/[slug].get'
 
 const route = useRoute()
-const { data } = await useFetch<ProjectQueryResult>(`/api/projects/${route.params.slug}`)
+const { data } = await useFetch<ProjectDetail>(`/api/projects/${route.params.slug}`)
 
 const { $sanityI18n } = useNuxtApp()
 const { t } = useI18n()

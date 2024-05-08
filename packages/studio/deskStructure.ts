@@ -1,15 +1,21 @@
-import {
-    filteredDocumentListItems,
-    singletonDocumentListItems,
-} from 'sanity-plugin-singleton-tools'
+import type { StructureBuilder } from 'sanity/structure'
 
-import type { StructureResolver } from 'sanity/structure'
+export function structure(S: StructureBuilder) {
+    return S.list()
+        .title('Content')
+        .items([
+            S.listItem()
+                .title('Instant Films')
+                .child(
+                    S.document()
+                        .schemaType('instantFilms')
+                        .documentId('instantFilms')
+                        .title('Instant Films'),
+                ),
 
-// eslint-disable-next-line func-style
-export const structure: StructureResolver = (S, context) => S.list()
-    .title('Sanity Love Content')
-    .items([
-        ...singletonDocumentListItems({ S, context })!,
-        S.divider(),
-        ...filteredDocumentListItems({ S, context }),
-    ])
+            ...S.documentTypeListItems()
+                .filter(
+                    listItem => !['instantFilms', 'media.tag'].includes(listItem.getId() as string),
+                ),
+        ])
+}

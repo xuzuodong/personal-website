@@ -1,9 +1,9 @@
-import gallery from './gallery'
-import instantFilm from './instantFilm'
-import project from './project'
+import galleries from './galleries'
+import instantFilms from './instantFilms'
+import projects from './projects'
 
 export const schemaTypes = [
-    gallery,
-    instantFilm,
-    project,
+    galleries,
+    instantFilms,
+    projects,
 ]

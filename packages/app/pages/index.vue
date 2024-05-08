@@ -1,12 +1,13 @@
 <script setup lang="ts">
+import type { ResolvedSanityImage } from '@sanity/asset-utils'
+
 const localePath = useLocalePath()
 
-const { data } = await useFetch('/api/instant-films')
+const { data } = await useFetch<ResolvedSanityImage[]>('/api/instant-films')
 
-// TODO: directly pass `data` to <instant-film-pile />
 const instantFilms = computed(() => data.value?.map(image => ({
     image,
-    orientation: image.asset!.metadata!.dimensions!.aspectRatio! > 1
+    orientation: image?.asset.metadata.dimensions.aspectRatio > 1
         ? 'landscape' as const
         : 'portrait' as const,
 })))

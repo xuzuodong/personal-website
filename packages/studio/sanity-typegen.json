@@ -1,5 +1,0 @@
-{
-  "path": "'../app/server/api/**/*.{ts,tsx,js,jsx}'",
-  "schema": "../app/types/sanity/schemas.json",
-  "generates": "../app/types/sanity/index.ts"
-}
