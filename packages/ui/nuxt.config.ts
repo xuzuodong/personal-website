@@ -6,12 +6,6 @@ export default defineNuxtConfig({
         'nuxt-icon',
     ],
 
-    components: {
-        // By default nuxt also auto-imports `.vue`,
-        // but this causes nuxt to warn "Two component files resolving to the same name xxx"
-        dirs: [{ path: '~/components/ui', extensions: ['vue'] }],
-    },
-
     tailwindcss: { exposeConfig: true },
 
     colorMode: { classSuffix: '' },
