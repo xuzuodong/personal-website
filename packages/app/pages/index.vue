@@ -50,6 +50,6 @@ const instantFilms = computed(() => data.value?.map(image => ({
 <style scoped>
 .headline {
     @apply text-center lg:text-left font-semibold whitespace-pre
-        text-2xl sm:text-[2rem] md:text-[2.25rem] xl:text-[2.5rem] 2xl:text-[2.75rem] lg:leading-tight xl:leading-[1.3] 2xl:leading-[1.2];
+        text-2xl sm:text-3xl md:text-4xl xl:text-[2.5rem] 2xl:text-[2.75rem] lg:leading-tight xl:leading-[1.3] 2xl:leading-[1.2];
 }
 </style>
