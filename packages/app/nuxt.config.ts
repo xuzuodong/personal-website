@@ -6,7 +6,7 @@ import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    extends: ['../ui'],
+    extends: ['../ui', 'nuxt-umami'],
 
     modules: [
         '@vueuse/motion/nuxt',

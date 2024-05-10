@@ -38,6 +38,7 @@
     "@vueuse/nuxt": "^10.9.0",
     "nuxt": "^3.11.2",
     "nuxt-icon": "^0.6.10",
+    "nuxt-umami": "^2.6.1",
     "photoswipe": "^5.4.3",
     "photoswipe-dynamic-caption-plugin": "^1.2.7",
     "sass": "^1.75.0",
