@@ -6,11 +6,12 @@ const props = defineProps<{
     img: ResolvedSanityImage
     url?: string
     sourceCodeUrl?: string
+    referer?: boolean
 }>()
 
 const link = computed<Link | undefined>(
     () => props.url
-        ? { type: 'url', url: props.url }
+        ? { type: 'url', url: props.url, referer: props.referer }
         : props.sourceCodeUrl
             ? { type: 'sourceCodeUrl', url: props.sourceCodeUrl }
             : undefined,

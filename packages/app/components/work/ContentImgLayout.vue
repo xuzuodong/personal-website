@@ -2,6 +2,7 @@
 export interface Link {
     type: 'url' | 'sourceCodeUrl'
     url: string
+    referer?: boolean
 }
 const props = defineProps<{
     link?: Link
@@ -11,7 +12,12 @@ const fixedClasses = 'max-w-[540px] xl:max-w-[720px] mx-auto'
 </script>
 
 <template>
-    <a v-if="link" class="link block" :class="[fixedClasses, link.type && 'relative']" :href="link.url" target="_blank">
+    <a
+        v-if="link"
+        :href="link.url" target="_blank"
+        :rel="link.type === 'url' && !link.referer ? 'noopener noreferrer' : 'noopener'"
+        class="link block" :class="[fixedClasses, link.type && 'relative']"
+    >
         <slot></slot>
         <div
             class="

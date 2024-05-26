@@ -30,6 +30,14 @@ export default defineType({
         }),
 
         defineField({
+            name: 'referer',
+            type: 'boolean',
+            title: 'Referer',
+            initialValue: true,
+            description: 'Whether to send the referer header when the user clicks on the URL link. This can be useful for analytics, but it\'s also a privacy concern.',
+        }),
+
+        defineField({
             name: 'sourceCodeUrl',
             type: 'url',
             title: 'Source code URL',

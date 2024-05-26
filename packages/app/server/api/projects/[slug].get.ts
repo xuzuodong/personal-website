@@ -7,6 +7,7 @@ export interface ProjectDetail {
     name: Value[]
     description: Value[]
     url: string
+    referer: boolean
     sourceCodeUrl: string
     tags: string[]
     coverImage: ResolvedSanityImage

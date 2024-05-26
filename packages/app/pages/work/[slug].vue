@@ -26,7 +26,7 @@ useHead({
                 <work-tag v-for="tag in data.tags" :key="tag" :tag />
             </div>
 
-            <work-content-img :img="data.coverImage" :url="data.url" :source-code-url="data.sourceCodeUrl" class="mb-8" />
+            <work-content-img :img="data.coverImage" :url="data.url" :referer="data.referer" :source-code-url="data.sourceCodeUrl" class="mb-8" />
 
             <portable-text :value="$sanityI18n(data.content)" :components="myPortableTextComponents" />
 
