@@ -29,6 +29,8 @@ useHead({
             <work-content-img :img="data.coverImage" :url="data.url" :source-code-url="data.sourceCodeUrl" class="mb-8" />
 
             <portable-text :value="$sanityI18n(data.content)" :components="myPortableTextComponents" />
+
+            <div class="pb-8"></div>
         </div>
     </app-layout>
     <div v-else>Cannot find project</div>
