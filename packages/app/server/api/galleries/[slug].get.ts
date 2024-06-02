@@ -17,5 +17,8 @@ export default defineEventHandler(async (event) => {
             asset->
         }
     }`
+
+    useStorage('redis').setItem('lastVisitedGallery', slug)
+
     return await useSanity().fetch<Gallery | null>(query, { slug })
 })

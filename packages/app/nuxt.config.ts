@@ -58,6 +58,16 @@ export default defineNuxtConfig({
         ],
     },
 
+    nitro: {
+        storage: {
+            redis: {
+                driver: 'redis',
+                url: process.env.REDIS_URL,
+                tls: true,
+            },
+        },
+    },
+
     image: {
         format: ['webp', 'jpeg', 'jpg'],
         providers: {

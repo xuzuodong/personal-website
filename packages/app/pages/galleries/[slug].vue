@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import PhotoSwipeLightbox from 'photoswipe/lightbox'
-import 'photoswipe/style.css'
-import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin'
-import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
-
 import type { Gallery } from '~/server/api/galleries/[slug].get'
 
 definePageMeta({
@@ -24,35 +19,9 @@ useHead({
         : `${t('app.title')}${t('photography.titleAffix')}`,
 })
 
-let lightbox: any
-
 const img = useImage()
 
-onMounted(() => {
-    lightbox = new PhotoSwipeLightbox({
-        gallery: '#photoswipe',
-        children: 'a',
-        pswpModule: () => import('photoswipe'),
-        loop: false,
-        imageClickAction: 'zoom',
-        tapAction: 'close',
-        doubleTapAction: 'zoom',
-        initialZoomLevel: 'fit',
-        secondaryZoomLevel: 1,
-    })
-
-    // eslint-disable-next-line ts/no-unused-vars
-    const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-        type: 'below',
-    })
-
-    lightbox.init()
-})
-
-onUnmounted(() => {
-    lightbox?.destroy()
-    lightbox = null
-})
+const { photoSwipeEl } = usePhotoSwipe()
 </script>
 
 <template>
@@ -75,7 +44,7 @@ onUnmounted(() => {
         <p class="container pb-4">{{ $sanityI18n(data.description) }}</p>
 
         <div
-            id="photoswipe"
+            ref="photoSwipeEl"
             class="
                 container mt-6 pb-12 gap-2
                 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5
