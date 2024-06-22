@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PhotoSwipeLightbox from 'photoswipe/lightbox'
+import PhotoSwipeLightbox, { type PhotoSwipeEventsMap } from 'photoswipe/lightbox'
 import 'photoswipe/style.css'
 import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin'
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
@@ -24,11 +24,13 @@ useHead({
         : `${t('app.title')}${t('photography.titleAffix')}`,
 })
 
-let lightbox: any
+let lightbox: PhotoSwipeLightbox | null
 
 const img = useImage()
 
 onMounted(() => {
+    if (!data.value) return
+
     lightbox = new PhotoSwipeLightbox({
         gallery: '#photoswipe',
         children: 'a',
@@ -39,6 +41,7 @@ onMounted(() => {
         doubleTapAction: 'zoom',
         initialZoomLevel: 'fit',
         secondaryZoomLevel: 1,
+        bgOpacity: 1,
     })
 
     // eslint-disable-next-line ts/no-unused-vars
@@ -47,6 +50,59 @@ onMounted(() => {
     })
 
     lightbox.init()
+
+    let lastActiveIndex: number | null = null
+
+    const images = data.value.images
+    const imagesLength = images.length
+    const dividends = (imagesLength * 2) - 1
+
+    lightbox.on('initialLayout', () => {
+        const pswpBgEl = document.querySelector<HTMLDivElement>('.pswp__bg')
+        if (!pswpBgEl) return
+
+        const colors = images.flatMap((image) => {
+            const imagePalette = image.asset.metadata.palette
+            const colorStart = imagePalette?.dominant?.population
+                && imagePalette?.dominant?.population > 1
+                ? imagePalette?.dominant?.background
+                : '#000'
+            const colorEnd = imagePalette?.darkMuted?.background || '#000'
+            return [colorStart, colorEnd]
+        })
+        colors.pop()
+
+        // equivalent to something like: "background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);"
+        pswpBgEl.style.setProperty(
+            'background',
+            `linear-gradient(135deg, ${colors.join(', ')})`,
+        )
+
+        const backgroundSize = `${dividends * 100}%`
+        pswpBgEl.style.setProperty('background-size', `${backgroundSize} ${backgroundSize}`)
+
+        lastActiveIndex = lightbox!.pswp!.currIndex
+    })
+
+    lightbox.on('contentActivate', (e: PhotoSwipeEventsMap['contentActivate']) => {
+        const pswpBgEl = document.querySelector<HTMLDivElement>('.pswp__bg')
+        if (!e || !pswpBgEl) return
+
+        const prevStartPercentage = (1 / dividends) * lastActiveIndex! * 2 * 100
+        const prevEndPercentage = (1 / dividends) * (lastActiveIndex! * 2 + 1) * 100
+
+        const nextStartPercentage = (1 / dividends) * e.content.index * 2 * 100
+        const nextEndPercentage = (1 / dividends) * (e.content.index * 2 + 1) * 100
+
+        pswpBgEl.animate([
+            { backgroundPosition: `${prevStartPercentage}% ${prevEndPercentage}%` },
+            { backgroundPosition: `${nextStartPercentage}% ${nextEndPercentage}%` },
+        ], {
+            duration: 500,
+            fill: 'forwards',
+        })
+        lastActiveIndex = e.content.index
+    })
 })
 
 onUnmounted(() => {
