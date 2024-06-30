@@ -10,12 +10,13 @@ export interface Gallery {
 
 export default defineEventHandler(async (event) => {
     const { slug } = getRouterParams(event)
+     // limit to 2 images
     const query = groq`*[_type == "gallery" && slug.current == $slug][0]{
         ...,
         images[]{
             ...,
             asset->
-        }
+        }[0...3]
     }`
     return await useSanity().fetch<Gallery | null>(query, { slug })
 })

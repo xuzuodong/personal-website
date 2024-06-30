@@ -55,7 +55,7 @@ onMounted(() => {
 
     const images = data.value.images
     const imagesLength = images.length
-    const dividends = (imagesLength * 2) - 1
+    const colorSectionLength = (imagesLength * 2) - 1
 
     lightbox.on('initialLayout', () => {
         const pswpBgEl = document.querySelector<HTMLDivElement>('.pswp__bg')
@@ -70,16 +70,27 @@ onMounted(() => {
             const colorEnd = imagePalette?.darkMuted?.background || '#000'
             return [colorStart, colorEnd]
         })
-        colors.pop()
 
         // equivalent to something like: "background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);"
+        // pswpBgEl.style.setProperty(
+        //     'background',
+        //     `linear-gradient(135deg, ${colors.join(', ')})`,
+        // )
+
         pswpBgEl.style.setProperty(
             'background',
-            `linear-gradient(135deg, ${colors.join(', ')})`,
+            `linear-gradient(90deg, ${[
+                '#000',
+'#fff',
+                '#f00',
+'#0f0',
+                '#000',
+'#fff',
+            ].join(', ')})`,
         )
 
-        const backgroundSize = `${dividends * 100}%`
-        pswpBgEl.style.setProperty('background-size', `${backgroundSize} ${backgroundSize}`)
+        const backgroundSize = `${colorSectionLength * 100}%`
+        pswpBgEl.style.setProperty('background-size', backgroundSize)
 
         lastActiveIndex = lightbox!.pswp!.currIndex
     })
@@ -88,16 +99,11 @@ onMounted(() => {
         const pswpBgEl = document.querySelector<HTMLDivElement>('.pswp__bg')
         if (!e || !pswpBgEl) return
 
-        const prevStartPercentage = (1 / dividends) * lastActiveIndex! * 2 * 100
-        const prevEndPercentage = (1 / dividends) * (lastActiveIndex! * 2 + 1) * 100
+        const prevPosition = -lastActiveIndex! * 2 * 100
+        const nextPosition = -e.content.index * 2 * 100
+        console.log(prevPosition, nextPosition)
 
-        const nextStartPercentage = (1 / dividends) * e.content.index * 2 * 100
-        const nextEndPercentage = (1 / dividends) * (e.content.index * 2 + 1) * 100
-
-        pswpBgEl.animate([
-            { backgroundPosition: `${prevStartPercentage}% ${prevEndPercentage}%` },
-            { backgroundPosition: `${nextStartPercentage}% ${nextEndPercentage}%` },
-        ], {
+        pswpBgEl.animate({ backgroundPositionX: `${nextPosition}%` }, {
             duration: 500,
             fill: 'forwards',
         })
