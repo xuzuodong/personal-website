@@ -97,7 +97,7 @@ onUnmounted(() => {
             id="photoswipe"
             class="
                 container mt-6 pb-12 gap-2
-                grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5
+                grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4
             "
         >
             <figure v-for="item in data.images" :key="item.asset._id" class="photo relative block">
