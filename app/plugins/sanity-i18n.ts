@@ -25,7 +25,7 @@ export default defineNuxtPlugin({
                 locales.push(...fallbackLocale[locale]!)
             }
             for (const l of locales) {
-                const fallbackTranslated = values[map[l]]
+                const fallbackTranslated = values[map[l]!]
                 if (fallbackTranslated) return fallbackTranslated.value
             }
         }

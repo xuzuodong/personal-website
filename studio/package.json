@@ -1,5 +1,5 @@
 {
-  "name": "@personal-website/studio",
+  "name": "@xuzuodong/personal-website-studio",
   "type": "module",
   "version": "1.0.0",
   "private": true,
@@ -8,7 +8,7 @@
   ],
   "main": "package.json",
   "scripts": {
-    "dev": "env-cmd -f ../../.env sanity dev",
+    "dev": "env-cmd -f ../.env sanity dev",
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",

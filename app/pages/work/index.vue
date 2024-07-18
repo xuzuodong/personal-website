@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Project } from '~/server/api/projects/index.get'
+import type { Project } from '~~/server/api/projects/index.get'
 
 const { t } = useI18n()
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { GalleryListItem } from '~/server/api/galleries/index.get'
+import type { GalleryListItem } from '~~/server/api/galleries/index.get'
 
 const { t } = useI18n()
 

@@ -6,9 +6,16 @@ import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    extends: ['../ui', 'nuxt-umami'],
+    future: {
+        compatibilityVersion: 4,
+    },
+
+    extends: ['nuxt-umami'],
 
     modules: [
+        '@nuxtjs/tailwindcss',
+        '@nuxtjs/color-mode',
+        'nuxt-icon',
         '@vueuse/motion/nuxt',
         '@nuxtjs/sanity',
         '@vueuse/nuxt',
@@ -33,7 +40,12 @@ export default defineNuxtConfig({
         '/sanity-image/**': { proxy: 'https://cdn.sanity.io/images/**' },
     },
 
+    colorMode: {
+        classSuffix: '',
+    },
+
     i18n: {
+        vueI18n: './app/i18n.ts',
         locales: [
             { code: 'en', name: 'English' },
             { code: 'zh-CN', name: '简体中文' },
@@ -44,6 +56,10 @@ export default defineNuxtConfig({
 
     imports: {
         dirs: ['providers'],
+        imports: [
+            { from: 'tailwind-variants', name: 'tv' },
+            { from: 'tailwind-variants', name: 'VariantProps', type: true },
+        ],
     },
 
     build: {
@@ -53,7 +69,7 @@ export default defineNuxtConfig({
     vite: {
         plugins: [
             VueI18nVitePlugin({
-                include: [resolve(dirname(fileURLToPath(import.meta.url)), './locales/**/*.yaml')],
+                include: [resolve(dirname(fileURLToPath(import.meta.url)), './app/locales/**/*.yaml')],
             }),
         ],
     },
@@ -87,7 +103,6 @@ export default defineNuxtConfig({
     },
 
     css: [
-        '../ui/assets/css/tailwind.css',
         '~/assets/css/main.css',
     ],
 
@@ -101,4 +116,5 @@ export default defineNuxtConfig({
     },
 
     devtools: { enabled: true },
+    compatibilityDate: '2024-07-18',
 })

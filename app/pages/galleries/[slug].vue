@@ -4,7 +4,7 @@ import 'photoswipe/style.css'
 import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin'
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
 
-import type { Gallery } from '~/server/api/galleries/[slug].get'
+import type { Gallery } from '~~/server/api/galleries/[slug].get'
 
 definePageMeta({
     scrollToTop: true,
@@ -55,7 +55,7 @@ onMounted(() => {
         const pswpBgEl = document.querySelector<HTMLDivElement>('.pswp__bg')
         if (!data.value || !e || !pswpBgEl) return
 
-        const currImagePalette = data.value.images[e.content.index].asset.metadata.palette
+        const currImagePalette = data.value.images?.[e.content.index]?.asset.metadata.palette
         const color1 = currImagePalette?.darkMuted?.background
         const color2 = currImagePalette?.dominant?.background
 

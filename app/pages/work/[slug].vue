@@ -3,7 +3,7 @@ import { PortableText } from '@portabletext/vue'
 
 import WorkContentImg from '~/components/work/ContentImg.vue'
 
-import type { ProjectDetail } from '~/server/api/projects/[slug].get'
+import type { ProjectDetail } from '~~/server/api/projects/[slug].get'
 
 const route = useRoute()
 const { data } = await useFetch<ProjectDetail>(`/api/projects/${route.params.slug}`)

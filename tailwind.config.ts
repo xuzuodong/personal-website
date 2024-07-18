@@ -1,9 +1,25 @@
-const { fontFamily } = require('tailwindcss/defaultTheme')
+import { fontFamily, screens } from 'tailwindcss/defaultTheme'
+import tailwindCssAnimate from 'tailwindcss-animate'
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss'
+
+export default <Partial<Config>>{
     darkMode: 'class',
     theme: {
+        screens: {
+            xs: '475px',
+            ...screens,
+        },
+        container: {
+            center: true,
+            padding: {
+                'DEFAULT': '1rem',
+                'sm': '2rem',
+                'lg': '3rem',
+                'xl': '5rem',
+                '2xl': '12rem',
+            },
+        },
         extend: {
             fontFamily: {
                 sans: ['Inter var', 'Inter', ...fontFamily.sans],
@@ -84,5 +100,5 @@ module.exports = {
             },
         },
     },
-    plugins: [require('tailwindcss-animate')],
+    plugins: [tailwindCssAnimate],
 }

@@ -1,6 +1,6 @@
 {
   "css.customData": [".vscode/tailwind.json"],
-  "eslint.experimental.useFlatConfig": true,
+  "eslint.useFlatConfig": true,
   "prettier.enable": false,
   "editor.formatOnSave": false,
   "eslint.validate": [
@@ -15,5 +15,8 @@
     "jsonc",
     "yaml"
   ],
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.words": [
+    "pswp"
+  ]
 }
