@@ -23,15 +23,15 @@ function getBrand(str: string) {
 <template>
     <div class="flex flex-nowrap justify-between items-center sm:mb-4 text-white">
         <div>
-            <p class="font-[500]">{{ image?.Model }}</p>
-            <p class="text-sm opacity-75">{{ exif?.LensModel }}</p>
+            <p class="font-[500] text-sm sm:text-base">{{ image?.Model }}</p>
+            <p class="text-[11px] sm:text-sm opacity-75">{{ exif?.LensModel }}</p>
         </div>
-        <div class="min-w-10"></div>
-        <div class="flex items-center text-[15px]">
+        <div class="min-w-2 sm:min-w-10"></div>
+        <div class="flex items-center">
             <photography-photo-caption-logo :brand="getBrand(image?.Make || exif?.LensMake)" />
-            <div class="w-px self-stretch bg-white mx-4"></div>
+            <div class="w-px self-stretch bg-white mx-1.5 sm:mx-4"></div>
             <div>
-                <div class="flex space-x-2 pb-px">
+                <div class="flex space-x-1 sm:space-x-2 pb-px text-[11px] sm:text-sm">
                     <p v-if="exif?.FocalLengthIn35mmFormat" class="whitespace-nowrap">
                         {{ exif.FocalLengthIn35mmFormat }}mm
                         <!-- <span v-if="exif?.FocalLength && show35MmEquivalentFocalLength(exif?.FocalLength, exif?.FocalLengthIn35mmFormat)">
@@ -42,7 +42,7 @@ function getBrand(str: string) {
                     <span class="whitespace-nowrap">{{ exif?.ExposureTime < 1 ? decimalToFraction(exif?.ExposureTime) : exif?.ExposureTime }}s</span>
                     <span class="whitespace-nowrap">ISO {{ exif?.ISO }}</span>
                 </div>
-                <div class="flex text-sm opacity-50">
+                <div class="flex text-[10px] sm:text-sm opacity-50">
                     <p>Photo by Ted Xu</p>
                 </div>
             </div>
@@ -53,5 +53,9 @@ function getBrand(str: string) {
 <style>
 .pswp__dynamic-caption--below {
     max-width: none !important;
+}
+.pswp__dynamic-caption--mobile {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
 }
 </style>
