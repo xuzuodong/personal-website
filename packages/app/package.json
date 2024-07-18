@@ -36,6 +36,7 @@
     "@vueuse/gesture": "^2.0.0",
     "@vueuse/motion": "^2.1.0",
     "@vueuse/nuxt": "^10.9.0",
+    "gsap": "^3.12.5",
     "nuxt": "^3.11.2",
     "nuxt-icon": "^0.6.10",
     "nuxt-umami": "^2.6.1",

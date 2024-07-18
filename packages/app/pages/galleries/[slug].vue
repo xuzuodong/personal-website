@@ -15,7 +15,7 @@ const route = useRoute()
 const { data } = await useFetch<Gallery | null>(`/api/galleries/` + `${route.params.slug}`)
 
 const { t } = useI18n()
-const { $sanityI18n } = useNuxtApp()
+const { $sanityI18n, $gsap } = useNuxtApp()
 
 useHead({
     title: $sanityI18n(data.value?.name),
@@ -50,64 +50,19 @@ onMounted(() => {
     })
 
     lightbox.init()
-
-    let lastActiveIndex: number | null = null
-
-    const images = data.value.images
-    const imagesLength = images.length
-    const colorSectionLength = (imagesLength * 2) - 1
-
-    lightbox.on('initialLayout', () => {
-        const pswpBgEl = document.querySelector<HTMLDivElement>('.pswp__bg')
-        if (!pswpBgEl) return
-
-        const colors = images.flatMap((image) => {
-            const imagePalette = image.asset.metadata.palette
-            const colorStart = imagePalette?.dominant?.population
-                && imagePalette?.dominant?.population > 1
-                ? imagePalette?.dominant?.background
-                : '#000'
-            const colorEnd = imagePalette?.darkMuted?.background || '#000'
-            return [colorStart, colorEnd]
-        })
-
-        // equivalent to something like: "background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);"
-        // pswpBgEl.style.setProperty(
-        //     'background',
-        //     `linear-gradient(135deg, ${colors.join(', ')})`,
-        // )
-
-        pswpBgEl.style.setProperty(
-            'background',
-            `linear-gradient(90deg, ${[
-                '#000',
-'#fff',
-                '#f00',
-'#0f0',
-                '#000',
-'#fff',
-            ].join(', ')})`,
-        )
-
-        const backgroundSize = `${colorSectionLength * 100}%`
-        pswpBgEl.style.setProperty('background-size', backgroundSize)
-
-        lastActiveIndex = lightbox!.pswp!.currIndex
-    })
-
+    const deg = 0
     lightbox.on('contentActivate', (e: PhotoSwipeEventsMap['contentActivate']) => {
         const pswpBgEl = document.querySelector<HTMLDivElement>('.pswp__bg')
-        if (!e || !pswpBgEl) return
+        if (!data.value || !e || !pswpBgEl) return
 
-        const prevPosition = -lastActiveIndex! * 2 * 100
-        const nextPosition = -e.content.index * 2 * 100
-        console.log(prevPosition, nextPosition)
+        const currImagePalette = data.value.images[e.content.index].asset.metadata.palette
+        const color1 = currImagePalette?.darkMuted?.background
+        const color2 = currImagePalette?.dominant?.background
 
-        pswpBgEl.animate({ backgroundPositionX: `${nextPosition}%` }, {
-            duration: 500,
-            fill: 'forwards',
-        })
-        lastActiveIndex = e.content.index
+        if (color1 && color2)
+            $gsap.to(pswpBgEl, {
+                background: `linear-gradient(${deg + 45}deg, ${color1}, ${color2})`,
+            })
     })
 })
 
