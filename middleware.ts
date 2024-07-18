@@ -2,8 +2,8 @@
  * This file is a Vercel Edge Middleware.
  * @see https://vercel.com/docs/functions/edge-middleware
  *
- * Since "xzd.me" is the common domain used by the subpackages `app` and `studio`,
- * and they are accessed via different pathnames (i.e., "/" for `app` and "/studio" for `studio`),
+ * Since "xzd.me" is the common domain used by the root package and sub-package `studio`,
+ * they are accessed via different pathnames (i.e., "/" for the root package and "/studio" for sub-package `studio`),
  * and since they are deployed separately on Vercel as two different projects,
  * this file is used to redirect all requests starting with `/studio` from this Vercel project to the other Vercel project for `studio`.
  */
