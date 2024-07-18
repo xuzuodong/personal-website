@@ -83,6 +83,9 @@ importers:
       '@vueuse/nuxt':
         specifier: ^10.9.0
         version: 10.9.0(nuxt@3.11.2(@parcel/watcher@2.4.1)(@types/node@20.12.7)(@unocss/reset@0.59.4)(encoding@0.1.13)(eslint@8.57.0)(floating-vue@5.2.2(@nuxt/kit@3.11.2(rollup@4.16.4))(vue@3.4.25(typescript@5.4.5)))(ioredis@5.4.1)(meow@9.0.0)(optionator@0.9.3)(rollup@4.16.4)(sass@1.75.0)(terser@5.30.4)(typescript@5.4.5)(unocss@0.59.4(postcss@8.4.38)(rollup@4.16.4)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.4)))(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.4))(vue-tsc@1.8.27(typescript@5.4.5)))(rollup@4.16.4)(vue@3.4.25(typescript@5.4.5))
+      gsap:
+        specifier: ^3.12.5
+        version: 3.12.5
       nuxt:
         specifier: ^3.11.2
         version: 3.11.2(@parcel/watcher@2.4.1)(@types/node@20.12.7)(@unocss/reset@0.59.4)(encoding@0.1.13)(eslint@8.57.0)(floating-vue@5.2.2(@nuxt/kit@3.11.2(rollup@4.16.4))(vue@3.4.25(typescript@5.4.5)))(ioredis@5.4.1)(meow@9.0.0)(optionator@0.9.3)(rollup@4.16.4)(sass@1.75.0)(terser@5.30.4)(typescript@5.4.5)(unocss@0.59.4(postcss@8.4.38)(rollup@4.16.4)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.4)))(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.4))(vue-tsc@1.8.27(typescript@5.4.5))
@@ -4535,6 +4538,9 @@ packages:
   groq@3.40.0:
     resolution: {integrity: sha512-Ru5/d9f1UIQLkkw4w/kpjtKOtw63b2fv5Prg8JEGCB8af6H5UXY8VWcm/1sPYCmxnJdalfhQ5ZhQzRMgk+O2wQ==}
     engines: {node: '>=18'}
+
+  gsap@3.12.5:
+    resolution: {integrity: sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==}
 
   gunzip-maybe@1.4.2:
     resolution: {integrity: sha512-4haO1M4mLO91PW57BMsDFf75UmwoRX0GkdD+Faw+Lr+r/OZrOCS0pIBwOL1xCKQqnQzbNFGgK2V2CpBUPeFNTw==}
@@ -13682,6 +13688,8 @@ snapshots:
   groq@3.39.0: {}
 
   groq@3.40.0: {}
+
+  gsap@3.12.5: {}
 
   gunzip-maybe@1.4.2:
     dependencies:
