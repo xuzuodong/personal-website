@@ -60,7 +60,13 @@ export default defineType({
                 title: 'Image',
                 type: 'image',
                 options: {
-                    metadata: ['blurhash', 'lqip', 'palette', 'exif'],
+                    metadata: [
+                        'blurhash',
+                        'lqip',
+                        'palette',
+                        'exif',
+                        'image' as any, // until https://github.com/sanity-io/sanity/pull/7190 is merged
+                    ],
                     hotspot: true,
                     storeOriginalFilename: false,
                 },

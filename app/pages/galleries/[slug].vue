@@ -47,6 +47,7 @@ onMounted(() => {
     // eslint-disable-next-line ts/no-unused-vars
     const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
         type: 'below',
+        mobileLayoutBreakpoint: 640,
     })
 
     lightbox.init()
@@ -59,10 +60,11 @@ onMounted(() => {
         const color1 = currImagePalette?.darkMuted?.background
         const color2 = currImagePalette?.dominant?.background
 
-        if (color1 && color2)
+        if (color1 && color2) {
             $gsap.to(pswpBgEl, {
                 background: `linear-gradient(${deg + 45}deg, ${color1}, ${color2})`,
             })
+        }
     })
 })
 
@@ -116,8 +118,8 @@ onUnmounted(() => {
                         class="bg-cover w-full h-full object-cover absolute top-0 left-0"
                         :style="{ backgroundImage: `url(${item.asset.metadata.lqip!})` }"
                     />
-                    <div v-if="item.asset.metadata.exif" class="pswp-caption-content">
-                        <photography-photo-caption :exif="item.asset.metadata.exif" />
+                    <div v-if="item.asset.metadata.exif || item.asset.metadata.image" class="pswp-caption-content">
+                        <photography-photo-caption :exif="item.asset.metadata.exif" :image="item.asset.metadata.image" />
                     </div>
                 </a>
             </figure>

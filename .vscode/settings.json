@@ -18,5 +18,8 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": [
     "pswp"
+  ],
+  "i18n-ally.localesPaths": [
+    "app/locales"
   ]
 }
