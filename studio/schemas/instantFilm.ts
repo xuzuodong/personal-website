@@ -1,5 +1,7 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
+import { imageFieldMetadataWithExif } from './utils'
+
 export default defineType({
     name: 'instantFilm',
     type: 'document',
@@ -15,7 +17,7 @@ export default defineType({
                 title: 'Image',
                 type: 'image',
                 options: {
-                    metadata: ['blurhash', 'lqip', 'palette', 'exif'],
+                    metadata: imageFieldMetadataWithExif,
                     hotspot: true,
                     storeOriginalFilename: false,
                 },
