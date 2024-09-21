@@ -5,7 +5,7 @@
   "scripts": {
     "dev:studio": "pnpm --filter personal-website-studio dev",
     "build:studio": "pnpm --filter personal-website-studio build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev -p 3737",
     "build": "nuxt build",
     "bp": "nuxt build && nuxt preview",
     "lint": "eslint .",
