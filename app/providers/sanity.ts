@@ -3,7 +3,7 @@
 
 import { joinURL } from 'ufo'
 
-import { createOperationsGenerator } from '#image'
+import { createOperationsGenerator } from '#image/utils/index'
 
 import type { ProviderGetImage } from '@nuxt/image/dist/types'
 

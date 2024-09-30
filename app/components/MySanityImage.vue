@@ -1,5 +1,5 @@
 <script lang="ts">
-import { imgProps } from '#image/components/nuxt-img'
+import { imgProps } from '#image/components/NuxtImg.vue'
 
 export default defineComponent({
     props: {
