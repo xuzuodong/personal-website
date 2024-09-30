@@ -87,12 +87,13 @@ whenever(() => loadedCount.value === props.instantFilms.length, () => {
 </script>
 
 <template>
-    <div v-for="(card, i) in instantFilms" :key="card.image.asset._id" class="film-container">
-        <instant-film-frame
+    <div v-for="(card, i) in instantFilms" :key="card.image.asset._id" class="films-container">
+        <div
             v-motion="`motion-${i}`"
             v-drag="handleDrag(i)"
             :initial="{ scale: 1.5, y: -1000 }"
             :class="goneCards.size === instantFilms.length - i - 1 ? 'pointer-events-auto' : 'pointer-events-none'"
+            class="instant-film-frame"
         >
             <my-sanity-image
                 :src="card.image.asset._id" :width="720" :height="720"
@@ -104,15 +105,23 @@ whenever(() => loadedCount.value === props.instantFilms.length, () => {
                 class="object-cover pointer-events-none touch-none select-none"
                 @load="loadedCount++"
             />
-        </instant-film-frame>
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.film-container {
+.films-container {
     @apply absolute w-full h-full
         flex justify-center items-center
         pointer-events-none select-none touch-none
         will-change-transform;
+}
+
+.instant-film-frame {
+    @apply bg-white border-white
+        border-[0.7em] border-b-[2.8em] md:border-[0.8em] md:border-b-[3.2em] rounded-[3px]
+        will-change-transform;
+    box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3);
+    filter: sepia(0.05) brightness(0.9);
 }
 </style>
