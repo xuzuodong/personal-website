@@ -18,7 +18,7 @@ const menuBackdropBgColorDark = 'rgba(0, 0, 0, 0.5)'
 
 watch(() => colorMode.value, (value) => {
     if (!isMobileMenuOpen.value) return
-    motions.menu.set({
+    motions.menu?.set({
         backgroundColor: value === 'dark' ? menuBackdropBgColorDark : menuBackdropBgColorLight,
     })
 })

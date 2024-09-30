@@ -13,7 +13,7 @@ export default defineType({
             title: 'Gallery name',
             validation: Rule => Rule
                 .required()
-                .custom((name: { value: string }[]) => !!name?.[0].value || 'Name is required'),
+                .custom((name: { value: string }[]) => !!name?.[0]?.value || 'Name is required'),
         }),
 
         defineField({

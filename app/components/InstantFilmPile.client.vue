@@ -22,7 +22,7 @@ function moveCardOutOfScreen(i: number, movementX: number, vx: number) {
     const motionInstance = motions[`motion-${i}`]
     const x = (200 + window.innerWidth) * Math.sign(vx)
     const rotate = movementX / 100 + (10 * vx)
-    motionInstance.apply({ x, rotate, transition: { stiffness: 100, damping: 25 } })
+    motionInstance?.apply({ x, rotate, transition: { stiffness: 100, damping: 25 } })
 }
 
 let draggingInfo: null | { i: number, movementX: number, vx: number, cancel: () => void } = null
