@@ -16,7 +16,7 @@ const props = defineProps<
         /** The icon to display */
         icon?: string
     }
-  >()
+>()
 
 const emits = defineEmits<DropdownMenuItemEmits>()
 const forwarded = useForwardPropsEmits(

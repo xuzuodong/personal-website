@@ -87,7 +87,7 @@ whenever(() => loadedCount.value === props.instantFilms.length, () => {
 </script>
 
 <template>
-    <div v-for="(card, i) in instantFilms" :key="card.image.asset._id" class="films-container">
+    <div v-for="(card, i) in instantFilms" :key="card.image.asset._id" class="film-container">
         <div
             v-motion="`motion-${i}`"
             v-drag="handleDrag(i)"
@@ -110,7 +110,7 @@ whenever(() => loadedCount.value === props.instantFilms.length, () => {
 </template>
 
 <style lang="scss" scoped>
-.films-container {
+.film-container {
     @apply absolute w-full h-full
         flex justify-center items-center
         pointer-events-none select-none touch-none
