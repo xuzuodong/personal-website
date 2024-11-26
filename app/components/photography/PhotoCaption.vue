@@ -10,6 +10,7 @@ function getBrand(str: string) {
         'NIKON CORPORATION': 'nikon',
         'Apple': 'apple',
         'FUJIFILM': 'fujifilm',
+        'SONY': 'sony',
     }
     return map[str as keyof typeof map]
 }
