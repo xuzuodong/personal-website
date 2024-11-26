@@ -1,7 +1,7 @@
 /**
  * find a fraction such that the difference
  * between the fraction and the original decimal is minimized.
- * e.g. decimalToFraction(0.003125) => '1/3'
+ * e.g. decimalToFraction(0.003125) => '1/320'
  */
 export function decimalToFraction(decimal: number) {
     // Set a limit for the denominator
