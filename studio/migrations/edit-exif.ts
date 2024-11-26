@@ -29,27 +29,33 @@ export default defineMigration({
         async object(node) {
             if (!dataSet) await getDataSet()
             if (node._type === 'sanity.imageAsset' && dataSet.has(node._id as string)) {
+                let needUpdate = false
                 const metadata = node.metadata as Record<string, any>
                 const exif = metadata.exif as Record<string, any>
                 const image = metadata.image as Record<string, any>
                 if (!image.Make) {
                     image.Make = 'SONY'
+                    needUpdate = true
                 }
                 if (!image.Model) {
                     image.Model = 'ILCE-7CM2'
+                    needUpdate = true
                 }
                 if (!exif.LensModel) {
                     exif.LensModel = '85mm F1.4 DG DN | Art 020'
+                    needUpdate = true
                 }
-                const newNode = {
-                    ...node,
-                    metadata: {
-                        ...metadata,
-                        exif,
-                        image,
-                    },
+                if (needUpdate) {
+                    const newNode = {
+                        ...node,
+                        metadata: {
+                            ...metadata,
+                            exif,
+                            image,
+                        },
+                    }
+                    return set(newNode)
                 }
-                return set(newNode)
             }
         },
     },
