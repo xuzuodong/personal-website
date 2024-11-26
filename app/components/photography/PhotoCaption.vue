@@ -40,7 +40,7 @@ function getBrand(str: string) {
                         </span> -->
                     </p>
                     <p class="whitespace-nowrap">ƒ{{ exif?.FNumber }}</p>
-                    <span class="whitespace-nowrap">{{ exif?.ExposureTime < 1 ? decimalToFraction(exif?.ExposureTime) : exif?.ExposureTime }}s</span>
+                    <span class="whitespace-nowrap">{{ exif?.ExposureTime < 1 ? decimalToReciprocalFraction(exif?.ExposureTime) : exif?.ExposureTime }}s</span>
                     <span class="whitespace-nowrap">ISO {{ exif?.ISO }}</span>
                 </div>
                 <div class="flex text-[10px] sm:text-sm opacity-50">
